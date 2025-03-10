@@ -1,10 +1,6 @@
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy)](https://github.com/CarlosZeyy/github-readme-stats)
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=react)
-
-<div>
-   <a href="https://github.com/CarlosZeyy">
-</div>
       
     
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
