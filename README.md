@@ -1,10 +1,11 @@
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
+
 <div>
    <a href="https://github.com/CarlosZeyy">
 </div>
       
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy&show_icons=true&theme=react )
     
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
  
  
 <div> 
