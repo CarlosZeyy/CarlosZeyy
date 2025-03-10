@@ -1,3 +1,5 @@
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy)](https://github.com/CarlosZeeyy/github-readme-stats)
+
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy&show_icons=true&theme=react)
 
 <div>
