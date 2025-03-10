@@ -1,8 +1,8 @@
 <div>
    <a href="https://github.com/CarlosZeyy">
-   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&layout=compact&langs_count=6&theme=tokyonight"/>
 </div>
+      
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy&show_icons=true&theme=react )
     
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
  
