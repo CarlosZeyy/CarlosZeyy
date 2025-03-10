@@ -1,6 +1,6 @@
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy)](https://github.com/CarlosZeeyy/github-readme-stats)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy)](https://github.com/CarlosZeyy/github-readme-stats)
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeeyy&show_icons=true&theme=react)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=react)
 
 <div>
    <a href="https://github.com/CarlosZeyy">
