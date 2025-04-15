@@ -1,6 +1,8 @@
 <div> 
 	<p>
-		Meu nome é Carlos Moises e atualmente estou cursando Análise e Desenvolvimento de Sistemas. Quero ser um desenvolvedor web full-stack, estou em busca da minha primeira oportunidade para começar na programação
+		Meu nome é Carlos Moises, tenho 24 anos e atualmente estou cursando Análise e Desenvolvimento de Sistemas. Quero ser um desenvolvedor web full-stack, estou em busca da minha primeira oportunidade para começar na programação
+Além da faculdade, atualmente estou estudando programação há quase 1 ano por conta propria e pesquisando por conteúdos online (YouTube, documentações, etc…).
+Estou tentando iniciar na área de programação agora, gostei muito de tentar aprender quando tive o primeiro contato, gostei de como parecia desafiante e difícil de aprender (ainda acho um pouco) mas estou me divertindo muito, aprendendo bastante e espero futuramente conseguir ingressar nessa área.
 	</p>
  
   <a href = "mailto:carloszeeyy@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
