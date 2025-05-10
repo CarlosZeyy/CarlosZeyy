@@ -21,7 +21,7 @@ Estou tentando iniciar na área de programação agora, gostei muito de tentar a
 </div>
 
 <div>
-<h2>Linguagens que uso 💻</h2>
+<h2>Ferramentas de desenvolvimento que uso 💻</h2>
 
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
 </div>
