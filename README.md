@@ -1,5 +1,6 @@
 <div> 
 	<p>
+	📖 Sobre mim: <br> 
 	Meu nome é Carlos Moises, tenho 24 anos e atualmente estou cursando Análise e Desenvolvimento de Sistemas. Quero atuar como desenvolvedor web full-stack, estou em busca da minha primeira oportunidade para começar na programação. <br>
 		
 Além da faculdade, atualmente estou estudando programação há quase 1 ano por conta própria e pesquisando por conteúdos online (YouTube, documentações, etc…).
