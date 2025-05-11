@@ -9,7 +9,7 @@ Estou tentando iniciar na área de programação agora, gostei muito de tentar a
   
   <a href = "mailto:carloszeeyy@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
   <a href="https://www.linkedin.com/in/carlos-moises-211205203/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-  	[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://seulink.com](https://carlosmoises.netlify.app))
+  	[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://carlosmoises.netlify.app)
 </div>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=react)
