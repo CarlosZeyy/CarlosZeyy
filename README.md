@@ -6,9 +6,10 @@
 Além da faculdade, atualmente estou estudando programação há quase 1 ano por conta própria e pesquisando por conteúdos online (YouTube, documentações, etc…).
 Estou tentando iniciar na área de programação agora, gostei muito de tentar aprender quando tive o primeiro contato, parecia algo desafiador e difícil de aprender (em algumas situações ainda acho um pouco kkk) mas estou me divertindo muito, aprendendo bastante e espero futuramente conseguir ingressar nessa área.
 	</p>
- 
+  
   <a href = "mailto:carloszeeyy@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
   <a href="https://www.linkedin.com/in/carlos-moises-211205203/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+  <a [href="https://carlosmoises.netlify.app" target="_blank">Portfólio</a>
 </div>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=react)
