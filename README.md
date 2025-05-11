@@ -7,7 +7,7 @@ Além da faculdade, atualmente estou estudando programação há quase 1 ano por
 Estou tentando iniciar na área de programação agora, gostei muito de tentar aprender quando tive o primeiro contato, parecia algo desafiador e difícil de aprender (em algumas situações ainda acho um pouco kkk) mas estou me divertindo muito, aprendendo bastante e espero futuramente conseguir ingressar nessa área.
 	</p>
   
-  <a href = "mailto:carloszeeyy@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  [![Gmail](https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red)](mailto:carloszeeyy@gmail.com)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-moises-211205203/)
   	[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://carlosmoises.netlify.app)
 </div>
