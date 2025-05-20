@@ -1,29 +1,70 @@
-<div> 
-	<h2> 📖 Sobre mim: </h2> <br> 
-	<p>
-	Meu nome é Carlos Moises, tenho 24 anos e atualmente estou cursando Análise e Desenvolvimento de Sistemas. Quero atuar como desenvolvedor web full-stack, estou em busca da minha primeira oportunidade para começar na programação. <br>
-	Além da faculdade, atualmente estou estudando programação há quase 1 ano por conta própria e pesquisando por conteúdos online (YouTube, documentações, etc…).
-	Estou tentando iniciar na área de programação agora, gostei muito de tentar aprender quando tive o primeiro contato, parecia algo desafiador e difícil de aprender (em algumas situações ainda acho um pouco kkk) mas estou me divertindo muito, aprendendo 		bastante e espero futuramente conseguir ingressar nessa área.
-	</p>
-  
-  [![Gmail](https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red)](mailto:carloszeeyy@gmail.com)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-moises-211205203/)
-  	[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://carlosmoises.netlify.app)
+Olá, mundo! Eu sou o <b>Carlos Moises</b> 👋
+<div align="center">
+  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+</div>
+<div align="center">
+  <a href="https://www.linkedin.com/in/carlos-moises-211205203/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="mailto:carloszeeyy@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <a href="https://carlosmoises.netlify.app" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white" alt="Portfolio"/>
+  </a>
+</div>
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=carloszeyy&style=flat-square&color=blue" alt="Profile views"/>
 </div>
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=react)
-      
+👨‍💻 Sobre mim:
+Sou um desenvolvedor full stack apaixonado por transformar ideias em aplicações web elegantes e funcionais.
 
+🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras ferramentas e linguagens de desenvolvimento.
+
+🌱 Constantemente aprendendo e aprimorando minhas habilidades em desenvolvimento web
+
+📫 Como me contatar: LinkedIn ou por email
+
+⚡ Curiosidade: Além de programar, também gosto de jogar um CS no tempo livre.
+
+
+🛠️ Linguagens e Ferramentas:
 <div>
-	<h2>Tecnologias que uso 💻</h2>
-	
-[![My Skills](https://skillicons.dev/icons?i=vite,git,github,vscode,vercel)](https://skillicons.dev)
+  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-original.svg" title="TailwindCSS" alt="TailwindCSS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg" title="Git" alt="Git" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg" title="VSCode" alt="VSCode" width="40" height="40"/>&nbsp;
 </div>
 
-<div>
-<h2>Ferramentas de desenvolvimento que uso 💻</h2>
-
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,nodejs,mongodb,tailwind,react)](https://skillicons.dev)
+<br>
+🔥 Minhas Estatísticas:
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=radical" alt="GitHub Stats" />
 </div>
- 
- 
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CarlosZeyy&theme=radical" alt="GitHub Streak" />
+</div>
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&layout=compact&theme=radical" alt="Top Languages" />
+</div>
+
+🚀 Projetos em Destaque:
+<div align="center">
+  <a href="https://github.com/CarlosZeyy/portfolio">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=CarlosZeyy&repo=portfolio&theme=radical" alt="Portfolio Repo" />
+  </a>
+  <!-- Adicione mais projetos conforme necessário -->
+</div>
+
+<div align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" alt="Random Quote" />
+</div>
+<div align="center">
+💼 Obrigado por visitar meu perfil! <br>
+🌟 Se você gostou de algum dos meus projetos, considere dar uma estrela ⭐
+</div>
