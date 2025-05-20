@@ -20,7 +20,7 @@ Olá, mundo! Eu sou o <b>Carlos Moises</b> 👋
 👨‍💻 Sobre mim:
 Sou um desenvolvedor full stack apaixonado por transformar ideias em aplicações web elegantes e funcionais.
 
-🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras ferramentas e linguagens de desenvolvimento.
+🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras linguagens e ferramentas de desenvolvimento.
 
 🌱 Constantemente aprendendo e aprimorando minhas habilidades em desenvolvimento web
 
