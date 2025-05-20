@@ -62,9 +62,6 @@ Sou um desenvolvedor full stack apaixonado por transformar ideias em aplicaçõe
 </div>
 
 <div align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" alt="Random Quote" />
-</div>
-<div align="center">
 💼 Obrigado por visitar meu perfil! <br>
 🌟 Se você gostou de algum dos meus projetos, considere dar uma estrela ⭐
 </div>
