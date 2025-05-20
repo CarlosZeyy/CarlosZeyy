@@ -18,7 +18,11 @@ Olá, mundo! Eu sou o <b>Carlos Moises</b> 👋
 </div>
 
 👨‍💻 Sobre mim:
-Sou um desenvolvedor full stack apaixonado por transformar ideias em aplicações web elegantes e funcionais.
+🎓 Sou estudante de Análise e Desenvolvimento de Sistemas e estou em busca da minha primeira oportunidade como desenvolvedor web full-stack.
+
+🚀 Há quase um ano, venho estudando programação de forma autodidata, explorando conteúdos online como YouTube e documentações técnicas.
+
+📍 Atualmente, resido em Santo André, São Paulo, Brasil.
 
 🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras linguagens e ferramentas de desenvolvimento.
 
