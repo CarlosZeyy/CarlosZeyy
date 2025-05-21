@@ -27,7 +27,7 @@ Olá! Eu sou o <b>Carlos Moises</b> 👋
 
 🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras linguagens e ferramentas de desenvolvimento.
 
-🌱 Constantemente aprendendo e aprimorando minhas habilidades em desenvolvimento 
+🌱 Constantemente aprendendo e aprimorando minhas habilidades como desenvolvedor. 
 
 📫 Como me contatar: LinkedIn ou por email
 
