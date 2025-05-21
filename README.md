@@ -19,7 +19,7 @@ Olá! Eu sou o <b>Carlos Moises</b> 👋
 
 👨‍💻 Sobre mim:
 
-🎓 Sou estudante de Análise e Desenvolvimento de Sistemas e estou em busca da minha primeira oportunidade como desenvolvedor web full-stack.
+🎓 Sou estudante de Análise e Desenvolvimento de Sistemas e estou em busca da minha primeira oportunidade como desenvolvedor full-stack.
 
 🚀 Há quase um ano, venho estudando programação de forma autodidata, explorando conteúdos online como YouTube e documentações técnicas.
 
@@ -27,7 +27,7 @@ Olá! Eu sou o <b>Carlos Moises</b> 👋
 
 🔭 Atualmente trabalhando em projetos web com React, Node.js, TailwindCSS e outras linguagens e ferramentas de desenvolvimento.
 
-🌱 Constantemente aprendendo e aprimorando minhas habilidades em desenvolvimento web
+🌱 Constantemente aprendendo e aprimorando minhas habilidades em desenvolvimento 
 
 📫 Como me contatar: LinkedIn ou por email
 
