@@ -1,4 +1,4 @@
-Olá, mundo! Eu sou o <b>Carlos Moises</b> 👋
+Olá! Eu sou o <b>Carlos Moises</b> 👋
 <div align="center">
   <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
 </div>
