@@ -2,10 +2,10 @@
   <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
 </div>
 
-# Carlos Moises Mariano Lopes Ferreira
+<h1 align="center"> Carlos Moises Mariano Lopes Ferreira </p>
 
 <p align="center">
-  <b>Desenvolvedor Full Stack</b> 
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Helvetica&weight=700&size=30&pause=1000&color=446DF7&center=true&vCenter=true&width=435&lines=Desenvolvedor+Full+Stack" alt="Typing SVG" /></a>
 </p>
 
 <div align="center">
