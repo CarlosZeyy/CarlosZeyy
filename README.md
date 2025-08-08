@@ -81,7 +81,7 @@ const carlos = {
 
 </details>
 
-<details open>
+<details>
 <summary><b>📚 Atualmente Estudando</b></summary>
 <br>
 
@@ -116,6 +116,18 @@ const carlos = {
 [![Live](https://img.shields.io/badge/Live_Demo-1DB954?style=for-the-badge&logo=spotify)](https://frontend-spotify-clone-sepia.vercel.app)
 
 **Stack:** React • Node.js • Express.js • CSS3
+
+---
+
+### 📊 Calculadora de Investimentos
+**Simulação de Juros Compostos • Visualização de Dados • Chart.js**
+
+*Calculadora interativa para simular projeções de investimentos com juros compostos, apresentando dados através de tabelas dinâmicas e gráficos em tempo real.*
+
+[![Repo](https://img.shields.io/badge/Repositório-181717?style=for-the-badge&logo=github)](https://github.com/CarlosZeyy/CalculadoraInvestimentos)
+[![Live](https://img.shields.io/badge/Live_Demo-00C851?style=for-the-badge&logo=calculator)](https://github.com/CarlosZeyy/CalculadoraInvestimentos)
+
+**Stack:** JavaScript • HTML5 • TailwindCSS • Chart.js
 
 ---
 
