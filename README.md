@@ -72,7 +72,7 @@ const carlos = {
 </details>
 
 <details open>
-<summary><b>🔧 Ferramentas & Metodologias</b></summary>
+<summary><b>🔧 Ferramentas</b></summary>
 <br>
 
 <img src="https://skillicons.dev/icons?i=git,github,vscode,idea,postman,figma,photoshop" />
