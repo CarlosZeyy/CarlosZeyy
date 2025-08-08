@@ -81,7 +81,7 @@ const carlos = {
 
 </details>
 
-<details>
+<details open>
 <summary><b>📚 Atualmente Estudando</b></summary>
 <br>
 
