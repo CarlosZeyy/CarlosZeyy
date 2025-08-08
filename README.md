@@ -41,7 +41,7 @@ const carlos = {
 💼 **Buscando** primeira oportunidade profissional como desenvolvedor  
 🏆 **Experiência** em mentoria técnica e ensino de front-end  
 📍 **Localização** Santo André, São Paulo, Brasil  
-⚡ **Fun fact** Quando não estou codando, estou jogando CS:GO!
+⚡ **Fun fact** Quando não estou codando, estou jogando CS2!
 
 ---
 
