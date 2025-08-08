@@ -77,8 +77,6 @@ const carlos = {
 
 <img src="https://skillicons.dev/icons?i=git,github,vscode,idea,postman,figma,photoshop" />
 
-**Metodologias:** Arquitetura MVC • Clean Code • SCRUM • Kanban
-
 </details>
 
 <details open>
