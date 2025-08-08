@@ -51,7 +51,7 @@ const carlos = {
 <summary><b>🎨 Front-end Development</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=react,js,html,css,tailwind,python" />
+<img src="https://skillicons.dev/icons?i=react,js,html,css,tailwind" />
 
 </details>
 
@@ -59,7 +59,7 @@ const carlos = {
 <summary><b>⚙️ Back-end Development</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=nodejs,express,python" />
+<img src="https://skillicons.dev/icons?i=nodejs,express" />
 
 </details>
 
@@ -85,7 +85,7 @@ const carlos = {
 <summary><b>📚 Atualmente Estudando</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=java,ts,angular" />
+<img src="https://skillicons.dev/icons?i=java,ts,angular,python" />
 
 </details>
 
