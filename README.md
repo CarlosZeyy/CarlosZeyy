@@ -82,7 +82,7 @@ const carlos = {
 <summary><b>📚 Atualmente Estudando</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=java,ts,angular" />
+<img src="https://skillicons.dev/icons?i=java,ts" />
 
 </details>
 
