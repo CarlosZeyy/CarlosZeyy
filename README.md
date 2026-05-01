@@ -78,6 +78,14 @@ const carlos = {
 
 </details>
 
+<details open>
+<summary><b>🌐 Deploy</b></summary>
+<br>
+
+<img src="https://skillicons.dev/icons?i=vercel,azure,netlify" />
+
+</details>
+
 ---
 
 ## 💻 Projetos em Destaque
