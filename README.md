@@ -58,7 +58,7 @@ const carlos = {
 <summary><b>⚙️ Back-end Development</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=nodejs,express,java,springboot" />
+<img src="https://skillicons.dev/icons?i=nodejs,express,java,spring" />
 
 </details>
 
