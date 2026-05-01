@@ -74,7 +74,7 @@ const carlos = {
 <summary><b>🔧 Ferramentas</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=git,github,vscode,idea,postman,docker" />
+<img src="https://skillicons.dev/icons?i=git,github,vscode,idea,postman,docker,vercel,azure,netlify" />
 
 </details>
 
