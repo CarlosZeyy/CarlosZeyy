@@ -1,199 +1,127 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="120"/>
-  
-  # Carlos Moises Mariano Lopes Ferreira
-  
-  <p>
-    <a href="https://git.io/typing-svg">
-      <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&pause=1000&color=446DF7&center=true&vCenter=true&width=600&lines=Desenvolvedor+Full+Stack;Construindo+o+Futuro+Digital;Apaixonado+por+Tecnologia" alt="Typing SVG" />
-    </a>
-  </p>
 
-  <p align="center">
-    <em>Transformando ideias em código, criando soluções digitais inovadoras</em>
-  </p>
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=24&duration=3000&pause=1000&color=446DF7&center=true&vCenter=true&width=560&lines=Desenvolvedor+Full+Stack;React+%2B+Node.js+%2B+Java;Sempre+aprendendo+algo+novo" alt="Typing SVG" />
+</a>
 
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlosmoisesdev/)
-  [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carloszeeyy@gmail.com)
-  [![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=firefox&logoColor=white)](https://carlosmoises.netlify.app)
+<br>
 
-  ![Profile Views](https://komarev.com/ghpvc/?username=CarlosZeyy&color=446DF7&style=for-the-badge)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-446DF7?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlosmoisesdev/)
+[![Gmail](https://img.shields.io/badge/Email-446DF7?style=flat-square&logo=gmail&logoColor=white)](mailto:carloszeeyy@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-446DF7?style=flat-square&logo=firefox&logoColor=white)](https://carlosmoises.netlify.app)
 
 </div>
 
----
-
-## 🚀 Sobre Mim
-
-```typescript
-const carlos = {
-  formacao: "Análise e Desenvolvimento de Sistemas - Estácio",
-  localizacao: "Santo André, São Paulo 🇧🇷",
-  foco: "Desenvolvimento Full Stack",
-  experiencia: ["Mentoria técnica", "Pair programming", "Projetos MERN Stack"],
-  aprendendo: ["Java", "TypeScript", "Angular"],
-  hobbies: ["Gaming 🎮", "Tecnologia", "Ensinar programação"]
-};
-```
-
-🎓 **Estudante** de Análise e Desenvolvimento de Sistemas na Estácio  
-💼 **Buscando** primeira oportunidade profissional como desenvolvedor  
-🏆 **Experiência** em mentoria técnica e ensino de front-end  
-📍 **Localização** Santo André, São Paulo, Brasil  
-⚡ **Fun fact** Quando não estou codando, estou jogando CS2!
-
----
-
-## 🛠️ Stack Tecnológica
-
-<details open>
-<summary><b>🎨 Front-end Development</b></summary>
 <br>
 
-<img src="https://skillicons.dev/icons?i=react,ts,js,html,css,tailwind" />
+## Sobre mim
 
-</details>
+Desenvolvedor Full Stack que atua tanto no ecossistema JavaScript (**React**, **Next.js**, **Node.js**) quanto em **Java + Spring Boot**, com experiência real construindo sistemas que resolvem problemas concretos de negócio — de orçamentos automatizados a gestão de pacientes em produção.
 
-<details open>
-<summary><b>⚙️ Back-end Development</b></summary>
+- 🎓 Tecnologia em Análise e Desenvolvimento de Sistemas — Estácio *(2025–2027)*
+- 📍 Santo André, São Paulo
+- 💼 Em busca da primeira oportunidade como desenvolvedor
+- 🧩 Já passei por mentoria técnica e pair programming com devs iniciantes
+
 <br>
-
-<img src="https://skillicons.dev/icons?i=nodejs,express,java,spring" />
-
-</details>
-
-<details open>
-<summary><b>🗄️ Banco de Dados</b></summary>
-<br>
-
-<img src="https://skillicons.dev/icons?i=mongodb,postgresql,mysql" />
-
-</details>
-
-<details open>
-<summary><b>🔧 Ferramentas</b></summary>
-<br>
-
-<img src="https://skillicons.dev/icons?i=git,github,vscode,idea,postman,docker" />
-
-</details>
-
-<details open>
-<summary><b>🌐 Deploy</b></summary>
-<br>
-
-<img src="https://skillicons.dev/icons?i=vercel,azure,netlify" />
-
-</details>
-
----
-
-## 💻 Projetos em Destaque
 
 <div align="center">
-
-### 🛒 E-commerce Full Stack
-**MERN Stack • Arquitetura MVC • JWT Authentication • Stripe Integration**
-
-*Plataforma completa de e-commerce com sistema de autenticação, gerenciamento de produtos, carrinho de compras e integração de pagamentos.*
-
-[![Repo](https://img.shields.io/badge/Repositório-181717?style=for-the-badge&logo=github)](https://github.com/CarlosZeyy/ecommerce-mern)
-[![Live](https://img.shields.io/badge/Live_Demo-FF5722?style=for-the-badge&logo=netlify)](https://ecommerce-mern-y3y7.onrender.com)
-
-**Stack:** React • Node.js • MongoDB • Express.js • JWT • Stripe API
-
----
-
-### 🎵 Clone do Spotify
-**Player Funcional • Navegação Dinâmica • Design Responsivo**
-
-*Replica da interface do Spotify com player de música funcional, navegação entre páginas e responsividade completa.*
-
-[![Repo](https://img.shields.io/badge/Repositório-181717?style=for-the-badge&logo=github)](https://github.com/CarlosZeyy/frontendSpotifyClone)
-[![Live](https://img.shields.io/badge/Live_Demo-1DB954?style=for-the-badge&logo=spotify)](https://frontend-spotify-clone-sepia.vercel.app)
-
-**Stack:** React • Node.js • Express.js • CSS3
-
----
-
-### 📊 Calculadora de Investimentos
-**Simulação de Juros Compostos • Visualização de Dados • Chart.js**
-
-*Calculadora interativa para simular projeções de investimentos com juros compostos, apresentando dados através de tabelas dinâmicas e gráficos em tempo real.*
-
-[![Repo](https://img.shields.io/badge/Repositório-181717?style=for-the-badge&logo=github)](https://github.com/CarlosZeyy/CalculadoraInvestimentos)
-[![Live](https://img.shields.io/badge/Live_Demo-00C851?style=for-the-badge&logo=calculator)](https://calcinvestimentos.netlify.app/)
-
-**Stack:** JavaScript • HTML5 • TailwindCSS • Chart.js
-
----
-
-### 🎯 Jogo da Velha
-**Projeto Educacional • Lógica de Programação • DOM Manipulation**
-
-*Jogo interativo desenvolvido para ensinar conceitos fundamentais de front-end para iniciantes.*
-
-[![Repo](https://img.shields.io/badge/Repositório-181717?style=for-the-badge&logo=github)](https://github.com/CarlosZeyy/TicTacToe-JogoDaVelha)
-[![Live](https://img.shields.io/badge/Live_Demo-FF5722?style=for-the-badge&logo=netlify)](https://tic-tac-toe-jogo-da-velha-seven.vercel.app)
-
-**Stack:** HTML5 • CSS3 • JavaScript
-
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=17&duration=1800&pause=200&color=A6E3A1&background=1E1E2EFF&center=false&vCenter=false&multiline=true&repeat=false&width=780&height=330&lines=guest%40carlos-dev%3A~%24+neofetch;carlos%40carlos-dev;-----------------;OS%3A++++++++++++Arch+Linux+x86_64;Fun%C3%A7%C3%A3o%3A++++++++Desenvolvedor+Full+Stack;Forma%C3%A7%C3%A3o%3A++++++Est%C3%A1cio+%C2%B7+ADS+%282025-2027%29;Linguagens%3A++++TypeScript%2C+Java%2C+JavaScript;Frameworks%3A++++React%2C+Next.js%2C+Spring+Boot;Bancos%3A++++++++PostgreSQL%2C+MongoDB%2C+MySQL;Ferramentas%3A+++Git%2C+Docker%2C+Postman%2C+VS+Code%2C+Jira;DevOps%3A++++++++Azure%2C+VPS+%28Hostinger%29;Local%3A+++++++++Santo+Andr%C3%A9%2C+SP+-+BR;Status%3A++++++++aberto+a+oportunidades" alt="Terminal" />
 </div>
 
----
+<br>
 
-## 📊 GitHub Analytics
+## Stack
+
+**Front-end**
+<p><img src="https://skillicons.dev/icons?i=react,nextjs,ts,js,html,css,tailwind,vite" /></p>
+
+**Back-end**
+<p><img src="https://skillicons.dev/icons?i=java,spring,nodejs,express" /></p>
+
+**Banco de Dados**
+<p><img src="https://skillicons.dev/icons?i=postgresql,mysql,mongodb" /></p>
+
+**DevOps & Cloud**
+<p><img src="https://skillicons.dev/icons?i=docker,git,github,azure,linux" /></p>
+
+**Ferramentas**
+<p><img src="https://skillicons.dev/icons?i=postman,vscode,idea,vercel,netlify" /></p>
+
+<br>
+
+## Projetos em destaque
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🧾 Sistema de Orçamentos — MV Vidros**
+<br><sub>Projeto autoral · Jun/2026</sub>
+
+Automatiza a criação de orçamentos em papel timbrado corporativo e o envio aos clientes, otimizando o fluxo comercial de uma vidraçaria.
+
+`Next.js` `TypeScript` `Zod` `Puppeteer` `Docker`
+
+</td>
+<td width="50%" valign="top">
+
+**🏥 Enfermex — Gestão de Pacientes**
+<br><sub><a href="https://app.enfermex.cloud">app.enfermex.cloud</a></sub>
+
+Aplicação completa para administração de pacientes, em produção, resolvendo gargalos reais de fluxo de dados.
+
+`React` `TypeScript` `Spring Boot` `PostgreSQL`
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**🎵 Clone do Spotify**
+<br><sub><a href="https://github.com/CarlosZeyy/frontendSpotifyClone">repositório</a> · <a href="https://frontend-spotify-clone-sepia.vercel.app">demo</a></sub>
+
+Réplica da interface do Spotify com player funcional e navegação dinâmica entre páginas.
+
+`React` `Node.js` `Express`
+
+</td>
+<td width="50%" valign="top">
+
+**📊 Calculadora de Investimentos**
+<br><sub><a href="https://github.com/CarlosZeyy/CalculadoraInvestimentos">repositório</a> · <a href="https://calcinvestimentos.netlify.app/">demo</a></sub>
+
+Simulação de juros compostos com tabelas dinâmicas e gráficos em tempo real via Chart.js.
+
+`JavaScript` `TailwindCSS` `Chart.js`
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><sub>Outros projetos</sub></summary>
+<br>
+
+- **[Jogo da Velha](https://tic-tac-toe-jogo-da-velha-seven.vercel.app)** — projeto educacional de lógica de programação
+
+</details>
+
+<br>
+
+## GitHub
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=dracula&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&layout=compact&langs_count=8&theme=dracula"/>
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&show_icons=true&theme=dracula&hide_border=true&include_all_commits=true&count_private=true" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&layout=compact&theme=dracula&hide_border=true&langs_count=7" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CarlosZeyy&theme=dracula" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CarlosZeyy&theme=dracula&hide_border=true" />
 </div>
 
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=CarlosZeyy&bg_color=282a36&color=bd93f9&line=ff79c6&point=ffb86c&area=true&hide_border=true" />
-</div>
-
----
-
-## 🎓 Certificações & Formação
-
-📚 **Análise e Desenvolvimento de Sistemas** - Centro Universitário Estácio (2025-2027)
-
-🏆 **Certificações:**
-- Especialização Front End - Hashtag Treinamentos ✅
-- Especialização JavaScript - Hashtag Treinamentos ✅
-
-🌐 **Idiomas:**
-- **Português:** Nativo
-- **Inglês:** Técnico (A2) - Meta: B1 em 2026
-
----
-
-## 📈 Experiência & Mentoria
-
-**🎯 Mentor Front-end & Pair Programming** *(Mai/2025 - Jun/2025)*
-- Ministrei curso introdutório de front-end para iniciantes
-- Ofereci mentoria em refatoração e otimização de código
-- Desenvolvimento colaborativo com GitHub e pair programming
-
----
+<br>
 
 <div align="center">
-  
-## 🤝 Vamos Conectar!
-
-*Sempre aberto para discussões sobre tecnologia, colaborações em projetos e oportunidades de crescimento.*
-
-**💼 Obrigado por visitar meu perfil!**
-
----
-
-<img src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
-
-*"Código limpo não é escrito seguindo regras. Código limpo é escrito por programadores que se importam."*
-
+  <sub>Aberto a conversas sobre tecnologia, colaborações e oportunidades 🚀</sub>
 </div>
