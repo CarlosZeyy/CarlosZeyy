@@ -26,7 +26,7 @@ Desenvolvedor Full Stack que atua tanto no ecossistema JavaScript (**React**, **
 <br>
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=17&duration=1800&pause=200&color=A6E3A1&background=1E1E2EFF&center=false&vCenter=false&multiline=true&repeat=false&width=780&height=330&lines=guest%40carlos-dev%3A~%24+neofetch;carlos%40carlos-dev;-----------------;OS%3A++++++++++++Arch+Linux+x86_64;Fun%C3%A7%C3%A3o%3A++++++++Desenvolvedor+Full+Stack;Forma%C3%A7%C3%A3o%3A++++++Est%C3%A1cio+%C2%B7+ADS+%282025-2027%29;Linguagens%3A++++TypeScript%2C+Java%2C+JavaScript;Frameworks%3A++++React%2C+Next.js%2C+Spring+Boot;Bancos%3A++++++++PostgreSQL%2C+MongoDB%2C+MySQL;Ferramentas%3A+++Git%2C+Docker%2C+Postman%2C+VS+Code%2C+Jira;DevOps%3A++++++++Azure%2C+VPS+%28Hostinger%29;Local%3A+++++++++Santo+Andr%C3%A9%2C+SP+-+BR;Status%3A++++++++aberto+a+oportunidades" alt="Terminal" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=17&duration=1800&pause=200&color=FFF&background=1E1E2EFF&center=false&vCenter=false&multiline=true&repeat=false&width=780&height=330&lines=guest%40carlos-dev%3A~%24+neofetch;carlos%40carlos-dev;-----------------;OS%3A++++++++++++Arch+Linux+x86_64;Fun%C3%A7%C3%A3o%3A++++++++Desenvolvedor+Full+Stack;Forma%C3%A7%C3%A3o%3A++++++Est%C3%A1cio+%C2%B7+ADS+%282025-2027%29;Linguagens%3A++++TypeScript%2C+Java%2C+JavaScript;Frameworks%3A++++React%2C+Next.js%2C+Spring+Boot;Bancos%3A++++++++PostgreSQL%2C+MongoDB%2C+MySQL;Ferramentas%3A+++Git%2C+Docker%2C+Postman%2C+VS+Code%2C+Jira;DevOps%3A++++++++Azure%2C+VPS+%28Hostinger%29;Local%3A+++++++++Santo+Andr%C3%A9%2C+SP+-+BR;Status%3A++++++++aberto+a+oportunidades" alt="Terminal" />
 </div>
 
 <br>
