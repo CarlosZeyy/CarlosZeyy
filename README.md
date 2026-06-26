@@ -43,10 +43,10 @@ Desenvolvedor Full Stack que atua tanto no ecossistema JavaScript (**React**, **
 <p><img src="https://skillicons.dev/icons?i=postgresql,mysql,mongodb" /></p>
 
 **DevOps & Cloud**
-<p><img src="https://skillicons.dev/icons?i=docker,git,github,azure,linux" /></p>
+<p><img src="https://skillicons.dev/icons?i=docker,git,github,githubactions,azure,linux" /></p>
 
 **Ferramentas**
-<p><img src="https://skillicons.dev/icons?i=postman,vscode,idea,vercel,netlify" /></p>
+<p><img src="https://skillicons.dev/icons?i=postman,vscode,idea,jest,vercel,netlify" /></p>
 
 <br>
 
