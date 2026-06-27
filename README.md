@@ -57,7 +57,8 @@ Desenvolvedor Full Stack que atua tanto no ecossistema JavaScript (**React**, **
 <td width="50%" valign="top">
 
 **🧾 Sistema de Orçamentos — MV Vidros**
-<br><sub>Projeto autoral · Jun/2026</sub>
+<br><sub>Projeto Freelancer · Jun/2026</sub>
+<br><sub><a href="https://github.com/CarlosZeyy/Sistema-MvVidros">repositório</a></sub>
 
 Automatiza a criação de orçamentos em papel timbrado corporativo e o envio aos clientes, otimizando o fluxo comercial de uma vidraçaria.
 
@@ -67,7 +68,10 @@ Automatiza a criação de orçamentos em papel timbrado corporativo e o envio ao
 <td width="50%" valign="top">
 
 **🏥 Enfermex — Gestão de Pacientes**
+<br><sub>Projeto Freelancer · Jun/2026</sub>
+<br><sub><a href="https://github.com/CarlosZeyy/EnfermEX">repositório</a></sub>
 <br><sub><a href="https://app.enfermex.cloud">app.enfermex.cloud</a></sub>
+
 
 Aplicação completa para administração de pacientes, em produção, resolvendo gargalos reais de fluxo de dados.
 
