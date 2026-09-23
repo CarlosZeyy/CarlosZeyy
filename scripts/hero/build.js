@@ -1,0 +1,253 @@
+// Gera assets/hero-dark.svg e assets/hero-light.svg a partir de mask.json
+const fs = require('fs');
+const path = require('path');
+const mask = JSON.parse(fs.readFileSync(path.join(__dirname, 'mask.json'), 'utf8'));
+const { GW, GH } = mask;
+const OUTDIR = process.argv[2] || path.join(__dirname, 'out');
+fs.mkdirSync(OUTDIR, { recursive: true });
+
+// PRNG determinístico para o resultado ser reproduzível
+let seed = 20250923;
+const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = (rnd() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const THEMES = {
+  dark: {
+    outer: '#070B16', panelA: '#0A101F', panelB: '#0C1426', bar: '#0B1222', line: 'rgba(255,255,255,0.10)',
+    muted: '#94A3B8', accent: '#22D3EE', accentRGBA: 'rgba(34,211,238,0.35)', boxFill: '#0A101F',
+    pixel: '#A78BFA', value: '#F8FAFC', leader: 'rgba(148,163,184,0.35)', pillBg: '#4C1D95', pillFg: '#E9D5FF',
+    live: '#F87171', grad: ['#7C3AED', '#22D3EE', '#10B981'],
+  },
+  light: {
+    outer: '#E2E8F0', panelA: '#FFFFFF', panelB: '#F8FAFC', bar: '#F1F5F9', line: 'rgba(15,23,42,0.10)',
+    muted: '#475569', accent: '#0891B2', accentRGBA: 'rgba(8,145,178,0.35)', boxFill: '#FFFFFF',
+    pixel: '#7C3AED', value: '#0F172A', leader: 'rgba(71,85,105,0.35)', pillBg: '#EDE9FE', pillFg: '#4C1D95',
+    live: '#DC2626', grad: ['#7C3AED', '#0891B2', '#059669'],
+  },
+};
+
+// ---------- conteúdo ----------
+const TITLE = 'carloszeyy@github:~ % ./profile.sh --live';
+const PILL = 'carloszeeyy@gmail.com';
+const ROWS = [
+  ['Subject', 'Carlos Moises'],
+  ['Role', 'Full-Stack Developer'],
+  ['Origin', 'Santo André, SP, Brasil'],
+  ['Education', 'Análise e Desenv. de Sistemas · Estácio'],
+  ['Status', 'Building + Shipping + Open to work'],
+  ['Shipping', 'Enfermex · app.enfermex.cloud'],
+  ['ToolChain', 'VS Code, Git, Docker, Linux, GitHub Actions'],
+  ['Core.Lang', 'TypeScript, JavaScript, Java, SQL'],
+  ['Core.Frontend', 'React, Next.js, Tailwind CSS, Vite'],
+  ['Core.Backend', 'Java, Spring Boot, Node.js, Express'],
+  ['Core.Database', 'PostgreSQL, MySQL, MongoDB'],
+  ['Core.Infra', 'Docker, GitHub Actions CI/CD, Azure, Linux'],
+  ['- Contact', null],
+  ['Grid.Mail', 'carloszeeyy@gmail.com'],
+  ['Grid.Portfolio', 'carlosmoises.dev'],
+  ['Grid.LinkedIn', 'in/carlosmoisesdev'],
+  ['Grid.GitHub', '@CarlosZeyy'],
+];
+const FOOTER = 'Mais sobre mim & projetos abaixo no README';
+const COLS = 78;              // caracteres por linha (monoespaçado)
+const TEXT_W = 655;           // largura forçada da linha
+
+// ---------- geometria ----------
+const W = 1180, H = 610;
+const BOX = { x: 36, y: 84, w: 400, h: 492 };
+const SC = 1.2;
+const TX = BOX.x + (BOX.w - GW * SC) / 2, TY = BOX.y + (BOX.h - GH * SC) / 2;
+const LOOP = 13.9, START = 3.2;
+const KT = [0, 0.194, 0.288, 0.432, 0.525, 0.669, 0.763, 0.906, 1].map(v => v.toFixed(3)).join(';');
+
+// ---------- pixels -> runs ----------
+const runs = [];   // {x,y,n}
+mask.rows.forEach((row, y) => {
+  let x = 0;
+  while (x < GW) {
+    if (row[x] === '1') { let n = 1; while (x + n < GW && row[x + n] === '1') n++; runs.push({ x, y, n }); x += n; }
+    else x++;
+  }
+});
+const runPath = rs => rs.map(r => `M${r.x} ${r.y}h${r.n}v1h-${r.n}z`).join('');
+const onPixels = [];
+mask.rows.forEach((row, y) => { for (let x = 0; x < GW; x++) if (row[x] === '1') onPixels.push([x, y]); });
+
+// ---------- formas para os pontos viajantes ----------
+const N = 750;
+const CX = GW / 2, CY = GH * 0.46;
+function samplePolylines(segs, n, jitter) {
+  // segs: [[x0,y0,x1,y1], ...]  -> n pontos proporcionais ao comprimento
+  const lens = segs.map(([a, b, c, d]) => Math.hypot(c - a, d - b));
+  const total = lens.reduce((s, l) => s + l, 0);
+  const pts = [];
+  segs.forEach(([a, b, c, d], i) => {
+    const k = Math.round(n * lens[i] / total);
+    for (let j = 0; j < k; j++) {
+      const t = (j + 0.5) / k;
+      pts.push([CX + a + (c - a) * t + (rnd() - 0.5) * 2 * jitter, CY + b + (d - b) * t + (rnd() - 0.5) * 2 * jitter]);
+    }
+  });
+  while (pts.length < n) pts.push(pts[(rnd() * pts.length) | 0]);
+  return pts.slice(0, n);
+}
+function curve(fn, t0, t1, steps) {
+  const s = []; let p = fn(t0);
+  for (let i = 1; i <= steps; i++) { const q = fn(t0 + (t1 - t0) * i / steps); s.push([p[0], p[1], q[0], q[1]]); p = q; }
+  return s;
+}
+
+// 1) átomo do React
+function reactShape() {
+  const segs = [];
+  for (let k = 0; k < 3; k++) {
+    const a = (k * 60) * Math.PI / 180;
+    segs.push(...curve(t => {
+      const x = 105 * Math.cos(t), y = 40 * Math.sin(t);
+      return [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)];
+    }, 0, Math.PI * 2, 90));
+  }
+  const pts = samplePolylines(segs, N - 50, 1.2);
+  for (let i = 0; i < 50; i++) { const r = 10 * Math.sqrt(rnd()), t = rnd() * Math.PI * 2; pts.push([CX + r * Math.cos(t), CY + r * Math.sin(t)]); }
+  return shuffle(pts);
+}
+// 2) glifo </>
+function codeShape() {
+  const segs = [
+    [-95, 0, -40, -62], [-95, 0, -40, 62],
+    [95, 0, 40, -62], [95, 0, 40, 62],
+    [-22, 80, 22, -80],
+  ];
+  return shuffle(samplePolylines(segs, N, 3));
+}
+// 3) xícara de café (Java)
+function javaShape() {
+  const segs = [];
+  segs.push(...curve(t => [62 * Math.cos(t), -20 + 12 * Math.sin(t)], 0, Math.PI * 2, 60));               // borda superior
+  segs.push([-62, -20, -50, 55], [62, -20, 50, 55]);                                                        // laterais
+  segs.push(...curve(t => [50 * Math.cos(t), 55 + 12 * Math.sin(t)], 0, Math.PI, 30));                     // fundo
+  segs.push(...curve(t => [62 + 26 * Math.cos(t), 15 + 30 * Math.sin(t)], -Math.PI / 2, Math.PI / 2, 30)); // alça
+  segs.push(...curve(t => [88 * Math.cos(t), 74 + 10 * Math.sin(t)], 0, Math.PI * 2, 60));                  // pires
+  for (const sx of [-26, 0, 26]) segs.push(...curve(t => [sx + 6 * Math.sin(t * 4), -42 - 55 * t], 0, 1, 24)); // vapor
+  return shuffle(samplePolylines(segs, N, 1.6));
+}
+const shapes = [reactShape(), codeShape(), javaShape()];
+const starts = shuffle(onPixels.slice()).slice(0, N);
+
+// ---------- montagem do SVG ----------
+function build(theme) {
+  const T = THEMES[theme];
+  const f = v => (Math.round(v * 10) / 10).toString();
+  const out = [];
+  out.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Carlos Moises — profile.sh --live">`);
+  out.push(`<title>Carlos Moises — desenvolvedor full stack</title>`);
+  out.push(`<defs>
+<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="${T.grad[0]}"><animate attributeName="stop-color" values="${T.grad[0]};${T.grad[1]};${T.grad[2]};${T.grad[0]}" dur="10s" repeatCount="indefinite"/></stop>
+  <stop offset="0.5" stop-color="${T.grad[1]}"><animate attributeName="stop-color" values="${T.grad[1]};${T.grad[2]};${T.grad[0]};${T.grad[1]}" dur="10s" repeatCount="indefinite"/></stop>
+  <stop offset="1" stop-color="${T.grad[2]}"><animate attributeName="stop-color" values="${T.grad[2]};${T.grad[0]};${T.grad[1]};${T.grad[2]}" dur="10s" repeatCount="indefinite"/></stop>
+</linearGradient>
+<linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${T.panelA}"/><stop offset="1" stop-color="${T.panelB}"/></linearGradient>
+<filter id="glow8" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="glow3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="txtGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="winClip"><rect x="2" y="2" width="${W - 4}" height="${H - 4}" rx="18"/></clipPath>
+<clipPath id="boxClip"><rect x="${BOX.x}" y="${BOX.y}" width="${BOX.w}" height="${BOX.h}" rx="10"/></clipPath>
+<rect id="tv" width="2.2" height="2" rx="0.6" fill="${T.pixel}"/>
+</defs>`);
+  // janela
+  out.push(`<rect x="2" y="2" width="${W - 4}" height="${H - 4}" rx="18" fill="${T.outer}"/>`);
+  out.push(`<g clip-path="url(#winClip)">`);
+  out.push(`<rect x="2" y="2" width="${W - 4}" height="${H - 4}" fill="url(#panelGrad)"/>`);
+  out.push(`<rect x="2" y="2" width="${W - 4}" height="46" fill="${T.bar}"/>`);
+  out.push(`<line x1="2" y1="48" x2="${W - 2}" y2="48" stroke="${T.line}"/>`);
+  out.push(`<circle cx="30" cy="25" r="5.5" fill="#ff5f56"/><circle cx="50" cy="25" r="5.5" fill="#ffbd2e"/><circle cx="70" cy="25" r="5.5" fill="#27c93f"/>`);
+  out.push(`<text x="${W / 2}" y="29" text-anchor="middle" font-size="12" fill="${T.muted}">${esc(TITLE)}</text>`);
+  // caixa do retrato
+  out.push(`<text x="38" y="74" font-size="10" letter-spacing="3" fill="${T.muted}">VISUAL.MAP</text>`);
+  out.push(`<rect x="${BOX.x}" y="${BOX.y}" width="${BOX.w}" height="${BOX.h}" rx="10" fill="none" stroke="${T.accent}" stroke-width="2" opacity="0.45" filter="url(#glow3)"/>`);
+  out.push(`<rect x="${BOX.x}" y="${BOX.y}" width="${BOX.w}" height="${BOX.h}" rx="10" fill="${T.boxFill}" stroke="${T.accentRGBA}"/>`);
+  const c = 14, { x, y, w, h } = BOX;
+  out.push(`<!-- cantos -->`);
+  out.push(`<path d="M ${x} ${y + c} L ${x} ${y} L ${x + c} ${y}" fill="none" stroke="${T.accent}" stroke-width="2" opacity="0.8"/>`);
+  out.push(`<path d="M ${x + w - c} ${y} L ${x + w} ${y} L ${x + w} ${y + c}" fill="none" stroke="${T.accent}" stroke-width="2" opacity="0.8"/>`);
+  out.push(`<path d="M ${x} ${y + h - c} L ${x} ${y + h} L ${x + c} ${y + h}" fill="none" stroke="${T.accent}" stroke-width="2" opacity="0.8"/>`);
+  out.push(`<path d="M ${x + w - c} ${y + h} L ${x + w} ${y + h} L ${x + w} ${y + h - c}" fill="none" stroke="${T.accent}" stroke-width="2" opacity="0.8"/>`);
+
+  out.push(`<g clip-path="url(#boxClip)">`);
+  const G = `transform="translate(${f(TX)},${f(TY)}) scale(${SC})"`;
+  // Camada 1: shimmer de entrada (0 -> 3.2s)
+  out.push(`<!-- Camada 1: shimmer de entrada -->`);
+  out.push(`<g ${G} fill="${T.pixel}" shape-rendering="crispEdges">`);
+  out.push(`<set attributeName="opacity" to="0" begin="${START}s"/>`);
+  const NG = 30, groups = Array.from({ length: NG }, () => []);
+  runs.forEach(r => groups[(rnd() * NG) | 0].push(r));
+  groups.forEach((g, i) => {
+    const b = (0.20 + i * 0.027).toFixed(2);
+    out.push(`<g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.9s" begin="${b}s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".4 0 .2 1"/><path d="${runPath(g)}"/></g>`);
+  });
+  out.push(`</g>`);
+  // Camada 2: retrato em faixas com glitch (loop)
+  out.push(`<!-- Camada 2: retrato em faixas (loop) -->`);
+  out.push(`<g ${G} fill="${T.pixel}" shape-rendering="crispEdges" opacity="0">`);
+  out.push(`<set attributeName="opacity" to="1" begin="${START}s"/>`);
+  const BH = 4;
+  for (let y0 = 0; y0 < GH; y0 += BH) {
+    const band = runs.filter(r => r.y >= y0 && r.y < y0 + BH);
+    if (!band.length) continue;
+    const dx = Math.round((rnd() - 0.5) * 90), dy = Math.round((rnd() - 0.5) * 90);
+    const tr = `0 0;0 0;${dx} ${dy};${dx} ${dy};${dx} ${dy};${dx} ${dy};${dx} ${dy};${dx} ${dy};0 0`;
+    out.push(`<g opacity="1"><animate attributeName="opacity" values="1;1;0;0;0;0;0;0;1" keyTimes="${KT}" dur="${LOOP}s" begin="${START}s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="${tr}" keyTimes="${KT}" dur="${LOOP}s" begin="${START}s" repeatCount="indefinite"/><path d="${runPath(band)}"/></g>`);
+  }
+  out.push(`</g>`);
+  // Camada 3: pontos viajantes (retrato -> React -> </> -> Java -> retrato)
+  out.push(`<!-- Camada 3: pontos viajantes (React -> code -> Java) -->`);
+  out.push(`<g ${G}>`);
+  for (let i = 0; i < N; i++) {
+    const s = starts[i], p1 = shapes[0][i], p2 = shapes[1][i], p3 = shapes[2][i];
+    const P = p => `${f(p[0])} ${f(p[1])}`;
+    const tr = `${P(s)};${P(s)};${P(p1)};${P(p1)};${P(p2)};${P(p2)};${P(p3)};${P(p3)};${P(s)}`;
+    out.push(`<use href="#tv" xlink:href="#tv" opacity="0"><animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="${KT}" dur="${LOOP}s" begin="${START}s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="${tr}" keyTimes="${KT}" dur="${LOOP}s" begin="${START}s" repeatCount="indefinite"/></use>`);
+  }
+  out.push(`</g>`);
+  out.push(`</g>`); // boxClip
+
+  // Painel SYSTEM.INFO
+  const PX = 470, PR = 1125;
+  out.push(`<!-- SYSTEM.INFO -->`);
+  out.push(`<text x="${PX}" y="106" font-size="13" letter-spacing="2" fill="${T.accent}" filter="url(#txtGlow)">SYSTEM.INFO</text>`);
+  out.push(`<line x1="566" y1="102" x2="1061" y2="102" stroke="${T.line}"/>`);
+  out.push(`<text x="${PR}" y="106" text-anchor="end" font-size="12" fill="${T.live}" font-weight="700"><tspan>&#9679;</tspan> LIVE<animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/></text>`);
+  const pillW = Math.round(PILL.length * 7.9 + 18);
+  out.push(`<rect x="${PX}" y="122" width="${pillW}" height="20" rx="4" fill="${T.pillBg}"/>`);
+  out.push(`<text x="${PX + 9}" y="136" font-size="13" font-weight="700" fill="${T.pillFg}">${esc(PILL)}</text>`);
+  out.push(`<line x1="${PX + pillW + 10}" y1="130" x2="${PR}" y2="130" stroke="${T.line}"/>`);
+  const pitch = ROWS.length > 17 ? 23 : 24.5;
+  ROWS.forEach(([label, value], i) => {
+    const yy = f(162 + i * pitch), b = (0.8 + i * 0.1).toFixed(2);
+    let inner;
+    if (value === null) {
+      const dashes = '-'.repeat(Math.max(0, COLS - label.length - 1));
+      inner = `<tspan fill="${T.muted}">${esc(label)} </tspan><tspan fill="${T.leader}">${dashes}</tspan>`;
+    } else {
+      const dots = '.'.repeat(Math.max(3, COLS - label.length - value.length - 2));
+      inner = `<tspan fill="${T.accent}">${esc(label)} </tspan><tspan fill="${T.leader}">${dots}</tspan><tspan fill="${T.value}" font-weight="600"> ${esc(value)}</tspan>`;
+    }
+    out.push(`<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="${b}s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="-8 0;0 0" dur="0.4s" begin="${b}s" fill="freeze"/><text x="${PX}" y="${yy}" font-size="14" textLength="${TEXT_W}" lengthAdjust="spacingAndGlyphs" xml:space="preserve">${inner}</text></g>`);
+  });
+  out.push(`<text x="${PX}" y="577" font-size="14" fill="${T.muted}">&#9656; ${esc(FOOTER)} &#8595; <tspan fill="${T.accent}">&#9608;<animate attributeName="fill-opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></tspan></text>`);
+  out.push(`</g>`); // winClip
+  // borda com gradiente animado
+  out.push(`<rect x="3" y="3" width="${W - 6}" height="${H - 6}" rx="17" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.55" filter="url(#glow8)"/>`);
+  out.push(`<rect x="3" y="3" width="${W - 6}" height="${H - 6}" rx="17" fill="none" stroke="url(#accent)" stroke-width="1.6"/>`);
+  out.push(`</svg>`);
+  return out.join('\n');
+}
+
+for (const theme of ['dark', 'light']) {
+  const svg = build(theme);
+  const file = path.join(OUTDIR, `hero-${theme}.svg`);
+  fs.writeFileSync(file, svg);
+  console.log(`${file}: ${(fs.statSync(file).size / 1024).toFixed(0)} KB`);
+}

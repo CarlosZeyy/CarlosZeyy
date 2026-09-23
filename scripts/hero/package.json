@@ -1,0 +1,12 @@
+{
+  "name": "hero-generator",
+  "private": true,
+  "description": "Gera assets/hero-dark.svg e assets/hero-light.svg a partir de uma foto",
+  "scripts": {
+    "dither": "node dither.js ../../foto.png mask.json",
+    "build": "node build.js ../../assets"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}
