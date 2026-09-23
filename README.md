@@ -2,9 +2,9 @@
 <!-- Gerado a partir da foto: assets/hero-dark.svg e assets/hero-light.svg (scripts/hero) -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=3">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=3">
-  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=3" width="100%">
+  <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=4">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=4">
+  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=4" width="100%">
 </picture>
 
 <!-- ===== ESTATÍSTICAS DO GITHUB ===== -->
