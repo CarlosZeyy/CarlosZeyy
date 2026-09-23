@@ -12,39 +12,40 @@ const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 42
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = (rnd() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// Paleta monocromática (preto e branco)
 const THEMES = {
   dark: {
-    outer: '#070B16', panelA: '#0A101F', panelB: '#0C1426', bar: '#0B1222', line: 'rgba(255,255,255,0.10)',
-    muted: '#94A3B8', accent: '#22D3EE', accentRGBA: 'rgba(34,211,238,0.35)', boxFill: '#0A101F',
-    pixel: '#A78BFA', value: '#F8FAFC', leader: 'rgba(148,163,184,0.35)', pillBg: '#4C1D95', pillFg: '#E9D5FF',
-    live: '#F87171', grad: ['#7C3AED', '#22D3EE', '#10B981'],
+    outer: '#000000', panelA: '#0A0A0A', panelB: '#0E0E0E', bar: '#111111', line: 'rgba(255,255,255,0.10)',
+    muted: '#7A7A7A', accent: '#A3A3A3', accentRGBA: 'rgba(255,255,255,0.18)', boxFill: '#0A0A0A',
+    pixel: '#E5E5E5', value: '#FFFFFF', leader: 'rgba(255,255,255,0.18)', pillBg: '#FFFFFF', pillFg: '#000000',
+    live: '#FFFFFF', lights: ['#3F3F3F', '#5A5A5A', '#7A7A7A'], grad: ['#333333', '#FFFFFF', '#333333'],
   },
   light: {
-    outer: '#E2E8F0', panelA: '#FFFFFF', panelB: '#F8FAFC', bar: '#F1F5F9', line: 'rgba(15,23,42,0.10)',
-    muted: '#475569', accent: '#0891B2', accentRGBA: 'rgba(8,145,178,0.35)', boxFill: '#FFFFFF',
-    pixel: '#7C3AED', value: '#0F172A', leader: 'rgba(71,85,105,0.35)', pillBg: '#EDE9FE', pillFg: '#4C1D95',
-    live: '#DC2626', grad: ['#7C3AED', '#0891B2', '#059669'],
+    outer: '#E5E5E5', panelA: '#FFFFFF', panelB: '#FAFAFA', bar: '#F5F5F5', line: 'rgba(0,0,0,0.10)',
+    muted: '#8A8A8A', accent: '#525252', accentRGBA: 'rgba(0,0,0,0.20)', boxFill: '#FFFFFF',
+    pixel: '#171717', value: '#000000', leader: 'rgba(0,0,0,0.22)', pillBg: '#171717', pillFg: '#FFFFFF',
+    live: '#000000', lights: ['#C4C4C4', '#A8A8A8', '#8A8A8A'], grad: ['#D4D4D4', '#171717', '#D4D4D4'],
   },
 };
 
 // ---------- conteúdo ----------
 const TITLE = 'carloszeyy@github:~ % ./profile.sh --live';
-const PILL = 'carloszeeyy@gmail.com';
+const PILL = 'carlosmoisesdev@gmail.com';
 const ROWS = [
-  ['Subject', 'Carlos Moises'],
-  ['Role', 'Full-Stack Developer'],
+  ['Subject', 'Carlos Moises Mariano Lopes Ferreira'],
+  ['Role', 'Full-Stack Developer & Analista de Sistemas'],
   ['Origin', 'Santo André, SP, Brasil'],
-  ['Education', 'Análise e Desenv. de Sistemas · Estácio'],
-  ['Status', 'Building + Shipping + Open to work'],
-  ['Shipping', 'Enfermex · app.enfermex.cloud'],
-  ['ToolChain', 'VS Code, Git, Docker, Linux, GitHub Actions'],
+  ['Work', 'Analista de Sistemas @ Systelos'],
+  ['Education', 'Tecnólogo em ADS · Estácio (2025–2027)'],
+  ['Shipping', 'Enfermex · MV Vidros · Systelos'],
+  ['ToolChain', 'VS Code, Git, Docker, Jest, Postman, Jira'],
   ['Core.Lang', 'TypeScript, JavaScript, Java, SQL'],
-  ['Core.Frontend', 'React, Next.js, Tailwind CSS, Vite'],
-  ['Core.Backend', 'Java, Spring Boot, Node.js, Express'],
-  ['Core.Database', 'PostgreSQL, MySQL, MongoDB'],
-  ['Core.Infra', 'Docker, GitHub Actions CI/CD, Azure, Linux'],
+  ['Core.Frontend', 'React, Next.js, Vite, Tailwind CSS'],
+  ['Core.Backend', 'Node.js, Express, Java, Spring Boot, REST'],
+  ['Core.Database', 'PostgreSQL, Supabase, MySQL, MongoDB'],
+  ['Core.Infra', 'Docker, GitHub Actions, Azure, Linux, Vercel'],
   ['- Contact', null],
-  ['Grid.Mail', 'carloszeeyy@gmail.com'],
+  ['Grid.Mail', 'carlosmoisesdev@gmail.com'],
   ['Grid.Portfolio', 'carlosmoises.dev'],
   ['Grid.LinkedIn', 'in/carlosmoisesdev'],
   ['Grid.GitHub', '@CarlosZeyy'],
@@ -62,17 +63,22 @@ const LOOP = 13.9, START = 3.2;
 const KT = [0, 0.194, 0.288, 0.432, 0.525, 0.669, 0.763, 0.906, 1].map(v => v.toFixed(3)).join(';');
 
 // ---------- pixels -> runs ----------
-const runs = [];   // {x,y,n}
-mask.rows.forEach((row, y) => {
-  let x = 0;
-  while (x < GW) {
-    if (row[x] === '1') { let n = 1; while (x + n < GW && row[x + n] === '1') n++; runs.push({ x, y, n }); x += n; }
-    else x++;
-  }
-});
+// tema escuro usa "rows" (claros viram pontos); tema claro usa "rowsLight" (escuros viram pontos)
+function pixelsOf(rows) {
+  const runs = [], onPixels = [];
+  rows.forEach((row, y) => {
+    let x = 0;
+    while (x < GW) {
+      if (row[x] === '1') {
+        let n = 1; while (x + n < GW && row[x + n] === '1') n++;
+        runs.push({ x, y, n }); for (let k = 0; k < n; k++) onPixels.push([x + k, y]); x += n;
+      } else x++;
+    }
+  });
+  return { runs, onPixels };
+}
+const PIXELS = { dark: pixelsOf(mask.rows), light: pixelsOf(mask.rowsLight || mask.rows) };
 const runPath = rs => rs.map(r => `M${r.x} ${r.y}h${r.n}v1h-${r.n}z`).join('');
-const onPixels = [];
-mask.rows.forEach((row, y) => { for (let x = 0; x < GW; x++) if (row[x] === '1') onPixels.push([x, y]); });
 
 // ---------- formas para os pontos viajantes ----------
 const N = 750;
@@ -133,11 +139,13 @@ function javaShape() {
   return shuffle(samplePolylines(segs, N, 1.6));
 }
 const shapes = [reactShape(), codeShape(), javaShape()];
-const starts = shuffle(onPixels.slice()).slice(0, N);
 
 // ---------- montagem do SVG ----------
 function build(theme) {
   const T = THEMES[theme];
+  const { runs, onPixels } = PIXELS[theme];
+  seed = 777; // mesma sequência aleatória para os dois temas
+  const starts = shuffle(onPixels.slice()).slice(0, N);
   const f = v => (Math.round(v * 10) / 10).toString();
   const out = [];
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Carlos Moises — profile.sh --live">`);
@@ -162,7 +170,7 @@ function build(theme) {
   out.push(`<rect x="2" y="2" width="${W - 4}" height="${H - 4}" fill="url(#panelGrad)"/>`);
   out.push(`<rect x="2" y="2" width="${W - 4}" height="46" fill="${T.bar}"/>`);
   out.push(`<line x1="2" y1="48" x2="${W - 2}" y2="48" stroke="${T.line}"/>`);
-  out.push(`<circle cx="30" cy="25" r="5.5" fill="#ff5f56"/><circle cx="50" cy="25" r="5.5" fill="#ffbd2e"/><circle cx="70" cy="25" r="5.5" fill="#27c93f"/>`);
+  out.push(`<circle cx="30" cy="25" r="5.5" fill="${T.lights[0]}"/><circle cx="50" cy="25" r="5.5" fill="${T.lights[1]}"/><circle cx="70" cy="25" r="5.5" fill="${T.lights[2]}"/>`);
   out.push(`<text x="${W / 2}" y="29" text-anchor="middle" font-size="12" fill="${T.muted}">${esc(TITLE)}</text>`);
   // caixa do retrato
   out.push(`<text x="38" y="74" font-size="10" letter-spacing="3" fill="${T.muted}">VISUAL.MAP</text>`);
@@ -239,7 +247,7 @@ function build(theme) {
   out.push(`<text x="${PX}" y="577" font-size="14" fill="${T.muted}">&#9656; ${esc(FOOTER)} &#8595; <tspan fill="${T.accent}">&#9608;<animate attributeName="fill-opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></tspan></text>`);
   out.push(`</g>`); // winClip
   // borda com gradiente animado
-  out.push(`<rect x="3" y="3" width="${W - 6}" height="${H - 6}" rx="17" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.55" filter="url(#glow8)"/>`);
+  out.push(`<rect x="3" y="3" width="${W - 6}" height="${H - 6}" rx="17" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.35" filter="url(#glow8)"/>`);
   out.push(`<rect x="3" y="3" width="${W - 6}" height="${H - 6}" rx="17" fill="none" stroke="url(#accent)" stroke-width="1.6"/>`);
   out.push(`</svg>`);
   return out.join('\n');

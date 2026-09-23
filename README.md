@@ -1,10 +1,10 @@
 <!-- ===== HERO ANIMADO (troca entre dark e light conforme o tema do GitHub) ===== -->
-<!-- Gerado a partir da foto: assets/hero-dark.svg e assets/hero-light.svg -->
+<!-- Gerado a partir da foto: assets/hero-dark.svg e assets/hero-light.svg (scripts/hero) -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=2">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=2">
-  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=2" width="100%">
+  <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=3">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=3">
+  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=3" width="100%">
 </picture>
 
 <!-- ===== ESTATÍSTICAS DO GITHUB ===== -->
@@ -13,20 +13,20 @@
 
 <!-- Streak — largura total -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=0A101F&stroke=22D3EE&ring=A78BFA&fire=10B981&currStreakLabel=22D3EE&sideLabels=94A3B8&currStreakNum=F8FAFC&sideNums=F8FAFC&dates=64748B&titleColor=22D3EE&card_width=1180" />
-  <img width="100%" src="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=FFFFFF&stroke=0891B2&ring=7C3AED&fire=059669&currStreakLabel=0891B2&sideLabels=475569&currStreakNum=0F172A&sideNums=0F172A&dates=94A3B8&titleColor=0891B2&card_width=1180" alt="Sequência de contribuições" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=0A0A0A&stroke=262626&ring=FFFFFF&fire=FFFFFF&currStreakLabel=A3A3A3&sideLabels=7A7A7A&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=525252&titleColor=A3A3A3&card_width=1180" />
+  <img width="100%" src="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=FFFFFF&stroke=E5E5E5&ring=171717&fire=171717&currStreakLabel=525252&sideLabels=8A8A8A&currStreakNum=000000&sideNums=000000&dates=A3A3A3&titleColor=525252&card_width=1180" alt="Sequência de contribuições" />
 </picture>
 
 <br/>
 
 <!-- Stats + linguagens — lado a lado -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=22D3EE&amp;icon_color=A78BFA&amp;text_color=94A3B8&amp;bg_color=0A101F&amp;card_width=500" />
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=0891B2&amp;icon_color=7C3AED&amp;text_color=0F172A&amp;bg_color=FFFFFF&amp;card_width=500" alt="Estatísticas do GitHub" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=FFFFFF&amp;icon_color=A3A3A3&amp;text_color=7A7A7A&amp;bg_color=0A0A0A&amp;card_width=500" />
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=000000&amp;icon_color=525252&amp;text_color=171717&amp;bg_color=FFFFFF&amp;card_width=500" alt="Estatísticas do GitHub" />
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=22D3EE&amp;text_color=94A3B8&amp;bg_color=0A101F&amp;card_width=500" />
-  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=0891B2&amp;text_color=0F172A&amp;bg_color=FFFFFF&amp;card_width=500" alt="Linguagens mais usadas" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=FFFFFF&amp;text_color=7A7A7A&amp;bg_color=0A0A0A&amp;card_width=500" />
+  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=000000&amp;text_color=171717&amp;bg_color=FFFFFF&amp;card_width=500" alt="Linguagens mais usadas" />
 </picture>
 
 </div>
@@ -47,24 +47,24 @@
 
 <!-- ===== PROJETOS ===== -->
 
-## O que eu construí
+## Projetos
 
-**🏥 Enfermex — gestão de pacientes** &nbsp;·&nbsp; em produção
-Aplicação completa para administração de pacientes, usada no dia a dia de uma equipe de enfermagem. Resolve o gargalo de fluxo de dados que antes era feito em planilha.
-`React` `TypeScript` `Spring Boot` `PostgreSQL`
+**Enfermex — gestão de pacientes** &nbsp;·&nbsp; freelance, em produção
+Sistema com 6 módulos usado por uma equipe de enfermagem. Preenchimento de prontuário caiu de 20 para 5 min por paciente e a busca de histórico de 10 min para menos de 1. JWT, validação de COREN, anexos em prontuário e deploy em VPS.
+`Java` `Spring Boot` `PostgreSQL` `React` `TypeScript`
 [código](https://github.com/CarlosZeyy/EnfermEX) &nbsp;·&nbsp; [app.enfermex.cloud](https://app.enfermex.cloud)
 
-**🧾 Sistema de Orçamentos — MV Vidros** &nbsp;·&nbsp; freelance, entregue
-Gera orçamentos em papel timbrado corporativo e envia direto ao cliente. Cortou uma etapa manual inteira do fluxo comercial de uma vidraçaria.
-`Next.js` `TypeScript` `Zod` `Puppeteer` `Docker`
+**Sistema de Orçamentos — MV Vidros** &nbsp;·&nbsp; projeto próprio
+Orçamento em PDF timbrado gerado e enviado ao cliente por e-mail e WhatsApp. Tempo de criação caiu de 30 para 5 minutos. Microsserviço de WhatsApp em Node/Express, testes com Jest e CI/CD com GitHub Actions em VPS.
+`Next.js` `TypeScript` `Zod` `Puppeteer` `Nodemailer` `Docker`
 [código](https://github.com/CarlosZeyy/Sistema-MvVidros)
 
-**📊 Calculadora de Investimentos**
-Simulação de juros compostos com tabela dinâmica e gráfico atualizando em tempo real.
-`JavaScript` `TailwindCSS` `Chart.js`
+**Calculadora de Investimentos**
+Simulação de juros compostos com tabela dinâmica e gráfico em tempo real.
+`JavaScript` `Tailwind CSS` `Chart.js`
 [código](https://github.com/CarlosZeyy/CalculadoraInvestimentos) &nbsp;·&nbsp; [demo](https://calcinvestimentos.netlify.app/)
 
-**🎵 Clone do Spotify**
+**Clone do Spotify**
 Réplica da interface com player funcional e navegação entre páginas.
 `React` `Node.js` `Express`
 [código](https://github.com/CarlosZeyy/frontendSpotifyClone) &nbsp;·&nbsp; [demo](https://frontend-spotify-clone-sepia.vercel.app)
@@ -76,19 +76,19 @@ Réplica da interface com player funcional e navegação entre páginas.
 <div align="center">
 
 <a href="https://www.linkedin.com/in/carlosmoisesdev/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A101F?style=for-the-badge&logoColor=white&labelColor=0A101F&logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYy0xLjE0NCAwLTIuMDYzLS45MjYtMi4wNjMtMi4wNjUgMC0xLjEzOC45Mi0yLjA2MyAyLjA2My0yLjA2MyAxLjE0IDAgMi4wNjQuOTI1IDIuMDY0IDIuMDYzIDAgMS4xMzktLjkyNSAyLjA2NS0yLjA2NCAyLjA2NXptMS43ODIgMTMuMDE5SDMuNTU1VjloMy41NjR2MTEuNDUyek0yMi4yMjUgMEgxLjc3MUMuNzkyIDAgMCAuNzc0IDAgMS43Mjl2MjAuNTQyQzAgMjMuMjI3Ljc5MiAyNCAxLjc3MSAyNGgyMC40NTFDMjMuMiAyNCAyNCAyMy4yMjcgMjQgMjIuMjcxVjEuNzI5QzI0IC43NzQgMjMuMiAwIDIyLjIyNSAweiIvPjwvc3ZnPg==" alt="LinkedIn" />
+  <img src="https://img.shields.io/badge/LinkedIn-0A0A0A?style=for-the-badge&logoColor=white&labelColor=0A0A0A&logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYy0xLjE0NCAwLTIuMDYzLS45MjYtMi4wNjMtMi4wNjUgMC0xLjEzOC45Mi0yLjA2MyAyLjA2My0yLjA2MyAxLjE0IDAgMi4wNjQuOTI1IDIuMDY0IDIuMDYzIDAgMS4xMzktLjkyNSAyLjA2NS0yLjA2NCAyLjA2NXptMS43ODIgMTMuMDE5SDMuNTU1VjloMy41NjR2MTEuNDUyek0yMi4yMjUgMEgxLjc3MUMuNzkyIDAgMCAuNzc0IDAgMS43Mjl2MjAuNTQyQzAgMjMuMjI3Ljc5MiAyNCAxLjc3MSAyNGgyMC40NTFDMjMuMiAyNCAyNCAyMy4yMjcgMjQgMjIuMjcxVjEuNzI5QzI0IC43NzQgMjMuMiAwIDIyLjIyNSAweiIvPjwvc3ZnPg==" alt="LinkedIn" />
 </a>
 &nbsp;&nbsp;
 <a href="https://carlosmoises.dev">
-  <img src="https://img.shields.io/badge/Portfólio-0A101F?style=for-the-badge&logo=google-chrome&logoColor=22D3EE&labelColor=0A101F" alt="Portfólio" />
+  <img src="https://img.shields.io/badge/Portfólio-0A0A0A?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0A0A0A" alt="Portfólio" />
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/CarlosZeyy">
-  <img src="https://img.shields.io/badge/GitHub-0A101F?style=for-the-badge&logo=github&logoColor=A78BFA&labelColor=0A101F" alt="GitHub" />
+  <img src="https://img.shields.io/badge/GitHub-0A0A0A?style=for-the-badge&logo=github&logoColor=white&labelColor=0A0A0A" alt="GitHub" />
 </a>
 &nbsp;&nbsp;
-<a href="mailto:carloszeeyy@gmail.com">
-  <img src="https://img.shields.io/badge/Email-0A101F?style=for-the-badge&logo=gmail&logoColor=10B981&labelColor=0A101F" alt="Email" />
+<a href="mailto:carlosmoisesdev@gmail.com">
+  <img src="https://img.shields.io/badge/Email-0A0A0A?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0A0A0A" alt="Email" />
 </a>
 
 </div>
