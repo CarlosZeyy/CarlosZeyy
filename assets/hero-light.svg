@@ -923,7 +923,7 @@
 <!-- SYSTEM.INFO -->
 <text x="470" y="106" font-size="13" letter-spacing="2" fill="#525252" filter="url(#txtGlow)">SYSTEM.INFO</text>
 <line x1="566" y1="102" x2="1061" y2="102" stroke="rgba(0,0,0,0.10)"/>
-<text x="1125" y="106" text-anchor="end" font-size="12" fill="#000000" font-weight="700"><tspan>&#9679;</tspan> LIVE<animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/></text>
+<text x="1125" y="106" text-anchor="end" font-size="12" fill="#DC2626" font-weight="700"><tspan>&#9679;</tspan> LIVE<animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/></text>
 <rect x="470" y="122" width="216" height="20" rx="4" fill="#171717"/>
 <text x="479" y="136" font-size="13" font-weight="700" fill="#FFFFFF">carlosmoisesdev@gmail.com</text>
 <line x1="696" y1="130" x2="1125" y2="130" stroke="rgba(0,0,0,0.10)"/>

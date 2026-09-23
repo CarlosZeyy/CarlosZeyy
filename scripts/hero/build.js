@@ -18,13 +18,13 @@ const THEMES = {
     outer: '#000000', panelA: '#0A0A0A', panelB: '#0E0E0E', bar: '#111111', line: 'rgba(255,255,255,0.10)',
     muted: '#7A7A7A', accent: '#A3A3A3', accentRGBA: 'rgba(255,255,255,0.18)', boxFill: '#0A0A0A',
     pixel: '#E5E5E5', value: '#FFFFFF', leader: 'rgba(255,255,255,0.18)', pillBg: '#FFFFFF', pillFg: '#000000',
-    live: '#FFFFFF', lights: ['#3F3F3F', '#5A5A5A', '#7A7A7A'], grad: ['#333333', '#FFFFFF', '#333333'],
+    live: '#F87171', lights: ['#3F3F3F', '#5A5A5A', '#7A7A7A'], grad: ['#333333', '#FFFFFF', '#333333'],
   },
   light: {
     outer: '#E5E5E5', panelA: '#FFFFFF', panelB: '#FAFAFA', bar: '#F5F5F5', line: 'rgba(0,0,0,0.10)',
     muted: '#8A8A8A', accent: '#525252', accentRGBA: 'rgba(0,0,0,0.20)', boxFill: '#FFFFFF',
     pixel: '#171717', value: '#000000', leader: 'rgba(0,0,0,0.22)', pillBg: '#171717', pillFg: '#FFFFFF',
-    live: '#000000', lights: ['#C4C4C4', '#A8A8A8', '#8A8A8A'], grad: ['#D4D4D4', '#171717', '#D4D4D4'],
+    live: '#DC2626', lights: ['#C4C4C4', '#A8A8A8', '#8A8A8A'], grad: ['#D4D4D4', '#171717', '#D4D4D4'],
   },
 };
 
