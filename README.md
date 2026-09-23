@@ -6,7 +6,7 @@
 
 <p>
   <a href="https://www.linkedin.com/in/carlosmoisesdev/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0B1020?style=for-the-badge&logo=linkedin&logoColor=446DF7&labelColor=0B1020"></a>
-  <a href="https://carlosmoises.netlify.app"><img alt="Portfólio" src="https://img.shields.io/badge/Portf%C3%B3lio-0B1020?style=for-the-badge&logo=googlechrome&logoColor=2BD9A0&labelColor=0B1020"></a>
+  <a href="https://carlosmoises.dev"><img alt="Portfólio" src="https://img.shields.io/badge/Portf%C3%B3lio-0B1020?style=for-the-badge&logo=googlechrome&logoColor=2BD9A0&labelColor=0B1020"></a>
   <a href="mailto:carloszeeyy@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-0B1020?style=for-the-badge&logo=gmail&logoColor=446DF7&labelColor=0B1020"></a>
 </p>
 
