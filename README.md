@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=1">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=1">
-  <img alt="Carlos Moisés — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=1" width="100%">
+  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=1" width="100%">
 </picture>
 
 <p>
