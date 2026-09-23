@@ -1,0 +1,33 @@
+name: gerar animacao de contribuicoes
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Gerar SVGs da cobrinha
+        uses: Platane/snk@v3
+        id: snake
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-dark.svg?palette=github-dark&color_snake=#446DF7&color_dots=#0B1020,#1E2A4E,#2E4FC4,#446DF7,#2BD9A0
+            dist/snake-light.svg?palette=github-light&color_snake=#3457D5&color_dots=#EDF1FB,#C3D0F5,#8CA3ED,#3457D5,#12A97B
+
+      - name: Publicar no branch output
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
