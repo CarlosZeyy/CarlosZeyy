@@ -1,33 +1,32 @@
-<!-- ===== HERO ANIMADO (troca entre dark e light conforme o tema do GitHub) ===== -->
-<!-- Gerado a partir da foto: assets/hero-dark.svg e assets/hero-light.svg (scripts/hero) -->
+<!-- ===== HERO: jogo 16-bit rodando sozinho (clique para jogar de verdade) ===== -->
+<!-- Gerado por scripts/game/build-svg.js a partir de game/shared. Ao trocar o SVG, aumente o ?v= para furar o cache. -->
 
-<picture>
-  <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=4">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-light.svg?v=4">
-  <img alt="Carlos Moises — desenvolvedor full stack" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/hero-dark.svg?v=4" width="100%">
-</picture>
+<a href="https://carloszeyy.github.io/CarlosZeyy/">
+  <img alt="Carlos Moises — Full-Stack Quest: jogo 16-bit em que o personagem percorre origem, skills, projetos e contato. Clique para jogar." src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/game.svg?v=1" width="100%">
+</a>
+
+<div align="center">
+
+<a href="https://carloszeyy.github.io/CarlosZeyy/">
+  <img src="https://img.shields.io/badge/%E2%96%B6%20%20JOGAR%20AGORA-FFD860?style=for-the-badge&labelColor=0A0816" alt="Jogar agora" />
+</a>
+
+<sub>← → andar &nbsp;·&nbsp; espaço pular &nbsp;·&nbsp; E interagir &nbsp;·&nbsp; funciona no celular</sub>
+
+</div>
+
+<br/>
 
 <!-- ===== ESTATÍSTICAS DO GITHUB ===== -->
 
 <div align="center">
 
-<!-- Streak — largura total -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=0A0A0A&stroke=262626&ring=FFFFFF&fire=FFFFFF&currStreakLabel=A3A3A3&sideLabels=7A7A7A&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=525252&titleColor=A3A3A3&card_width=1180" />
-  <img width="100%" src="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=FFFFFF&stroke=E5E5E5&ring=171717&fire=171717&currStreakLabel=525252&sideLabels=8A8A8A&currStreakNum=000000&sideNums=000000&dates=A3A3A3&titleColor=525252&card_width=1180" alt="Sequência de contribuições" />
-</picture>
+<img width="100%" src="https://streak-stats.demolab.com/?user=CarlosZeyy&hide_border=true&background=0A0816&stroke=2A2A5A&ring=FFD860&fire=FF5A5A&currStreakLabel=8AE8FF&sideLabels=A8B0FF&currStreakNum=F6F6FA&sideNums=F6F6FA&dates=5A5AA0&card_width=1180" alt="Sequência de contribuições" />
 
 <br/>
 
-<!-- Stats + linguagens — lado a lado -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=FFFFFF&amp;icon_color=A3A3A3&amp;text_color=7A7A7A&amp;bg_color=0A0A0A&amp;card_width=500" />
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=000000&amp;icon_color=525252&amp;text_color=171717&amp;bg_color=FFFFFF&amp;card_width=500" alt="Estatísticas do GitHub" />
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=FFFFFF&amp;text_color=7A7A7A&amp;bg_color=0A0A0A&amp;card_width=500" />
-  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=000000&amp;text_color=171717&amp;bg_color=FFFFFF&amp;card_width=500" alt="Linguagens mais usadas" />
-</picture>
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=FFD860&amp;icon_color=8AE8FF&amp;text_color=A8B0FF&amp;bg_color=0A0816&amp;card_width=500" alt="Estatísticas do GitHub" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=FFD860&amp;text_color=A8B0FF&amp;bg_color=0A0816&amp;card_width=500" alt="Linguagens mais usadas" />
 
 </div>
 
@@ -69,6 +68,11 @@ Réplica da interface com player funcional e navegação entre páginas.
 `React` `Node.js` `Express`
 [código](https://github.com/CarlosZeyy/frontendSpotifyClone) &nbsp;·&nbsp; [demo](https://frontend-spotify-clone-sepia.vercel.app)
 
+**Full-Stack Quest** &nbsp;·&nbsp; este perfil
+O jogo do topo da página: pixel art gerado por código, sem imagens nem dependências. O mesmo cenário alimenta o jogo em canvas e o SVG animado do README.
+`JavaScript` `Canvas` `SVG` `GitHub Actions`
+[código](https://github.com/CarlosZeyy/CarlosZeyy/tree/main/game) &nbsp;·&nbsp; [jogar](https://carloszeyy.github.io/CarlosZeyy/)
+
 <br/>
 
 <!-- ===== CONTATO ===== -->
@@ -76,19 +80,19 @@ Réplica da interface com player funcional e navegação entre páginas.
 <div align="center">
 
 <a href="https://www.linkedin.com/in/carlosmoisesdev/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A0A0A?style=for-the-badge&logoColor=white&labelColor=0A0A0A&logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYy0xLjE0NCAwLTIuMDYzLS45MjYtMi4wNjMtMi4wNjUgMC0xLjEzOC45Mi0yLjA2MyAyLjA2My0yLjA2MyAxLjE0IDAgMi4wNjQuOTI1IDIuMDY0IDIuMDYzIDAgMS4xMzktLjkyNSAyLjA2NS0yLjA2NCAyLjA2NXptMS43ODIgMTMuMDE5SDMuNTU1VjloMy41NjR2MTEuNDUyek0yMi4yMjUgMEgxLjc3MUMuNzkyIDAgMCAuNzc0IDAgMS43Mjl2MjAuNTQyQzAgMjMuMjI3Ljc5MiAyNCAxLjc3MSAyNGgyMC40NTFDMjMuMiAyNCAyNCAyMy4yMjcgMjQgMjIuMjcxVjEuNzI5QzI0IC43NzQgMjMuMiAwIDIyLjIyNSAweiIvPjwvc3ZnPg==" alt="LinkedIn" />
+  <img src="https://img.shields.io/badge/LinkedIn-0A0816?style=for-the-badge&logoColor=white&labelColor=0A0816&logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYy0xLjE0NCAwLTIuMDYzLS45MjYtMi4wNjMtMi4wNjUgMC0xLjEzOC45Mi0yLjA2MyAyLjA2My0yLjA2MyAxLjE0IDAgMi4wNjQuOTI1IDIuMDY0IDIuMDYzIDAgMS4xMzktLjkyNSAyLjA2NS0yLjA2NCAyLjA2NXptMS43ODIgMTMuMDE5SDMuNTU1VjloMy41NjR2MTEuNDUyek0yMi4yMjUgMEgxLjc3MUMuNzkyIDAgMCAuNzc0IDAgMS43Mjl2MjAuNTQyQzAgMjMuMjI3Ljc5MiAyNCAxLjc3MSAyNGgyMC40NTFDMjMuMiAyNCAyNCAyMy4yMjcgMjQgMjIuMjcxVjEuNzI5QzI0IC43NzQgMjMuMiAwIDIyLjIyNSAweiIvPjwvc3ZnPg==" alt="LinkedIn" />
 </a>
 &nbsp;&nbsp;
 <a href="https://carlosmoises.dev">
-  <img src="https://img.shields.io/badge/Portfólio-0A0A0A?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0A0A0A" alt="Portfólio" />
+  <img src="https://img.shields.io/badge/Portfólio-0A0816?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0A0816" alt="Portfólio" />
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/CarlosZeyy">
-  <img src="https://img.shields.io/badge/GitHub-0A0A0A?style=for-the-badge&logo=github&logoColor=white&labelColor=0A0A0A" alt="GitHub" />
+  <img src="https://img.shields.io/badge/GitHub-0A0816?style=for-the-badge&logo=github&logoColor=white&labelColor=0A0816" alt="GitHub" />
 </a>
 &nbsp;&nbsp;
 <a href="mailto:carlosmoisesdev@gmail.com">
-  <img src="https://img.shields.io/badge/Email-0A0A0A?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0A0A0A" alt="Email" />
+  <img src="https://img.shields.io/badge/Email-0A0816?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0A0816" alt="Email" />
 </a>
 
 </div>
