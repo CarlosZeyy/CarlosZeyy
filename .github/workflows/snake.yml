@@ -1,4 +1,4 @@
-name: Gerar animacao de contribuicoes
+name: Gerar cobrinha e stats do perfil
 
 on:
   schedule:
@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+
       - name: Gerar SVGs da cobrinha
         uses: Platane/snk/svg-only@v3
         with:
@@ -22,6 +24,11 @@ jobs:
           outputs: |
             dist/snake-dark.svg?color_snake=#FFD860&color_dots=#1C1C44,#3A3470,#5A5AA0,#8A84C0,#8AE8FF
             dist/snake-light.svg?color_snake=#E45C10&color_dots=#EBEDF0,#C8C4F0,#8A84C0,#5A5AA0,#2A2A5A
+
+      - name: Gerar card PLAYER STATS
+        run: node scripts/game/build-stats.js dist/stats.svg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publicar no branch output
         uses: crazy-max/ghaction-github-pages@v4
