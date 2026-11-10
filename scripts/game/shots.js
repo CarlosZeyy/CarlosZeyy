@@ -18,11 +18,13 @@ export function frame(cam, o = {}) {
   const px = cam + 130, zone = Math.max(0, Math.min(3, Math.floor(px / ZONE_W)));
   let y = 0;
   SKY_BANDS.forEach((h, i) => { composite(img, [[0, y, VIEW_W, h, SKIES[zone][i]]]); y += h; });
-  composite(img, world.stars.map(([sx, sy, s, c]) => [sx, sy, s, s, c.replace('#', 'rgba(').length ? c : c]).filter(() => STAR_ALPHA[zone] > 0.5));
+  if (STAR_ALPHA[zone] > 0.5) composite(img, world.stars.map(([sx, sy, s, c]) => [sx, sy, s, s, c]));
   for (const k of ['far', 'mid', 'main']) composite(img, world.layers[k].rects, -Math.round(cam * world.layers[k].parallax), 0);
+  composite(img, world.blinks, -cam, 0);
+  for (const c of world.cars) if (o.cars !== false) composite(img, c.rects, c.from + 150 - cam, c.y);
   for (const c of world.chips) composite(img, gridRects(SPRITES.chip, c.x - cam, c.y));
   composite(img, gridRects(o.walk ? P.walk[2] : P.idle[0], 130 - P.footX, GROUND - P.floorY));
-  composite(img, ui.hudZone(zone)); composite(img, ui.hudChips(3, world.chips.length));
+  if (!o.title) { composite(img, ui.hudZone(zone)); composite(img, ui.hudChips(3, world.chips.length)); }
   const stop = world.stops.find(s => Math.abs(s.x - px) < 24);
   if (stop && o.dialog !== false) {
     const rows = stop.rows;
@@ -38,6 +40,8 @@ export function frame(cam, o = {}) {
 if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
   const cams = process.argv.slice(2).map(Number);
   const list = cams.length ? cams.map(c => [c, {}]) : [[-140, { title: true }], [20, {}], [220, { dialog: false }], [628, {}], [800, { walk: true }], [1178, {}], [1500, { banner: true, walk: true }], [1900, { walk: true }], [2048, {}]];
+  // imagem de compartilhamento do jogo (og:image)
+  if (!cams.length) fs.writeFileSync(path.join(OUT, '../../../game/og.png'), encodePNG(frame(-140, { title: true, dialog: false }), 3));
   for (const [cam, o] of list) {
     const file = path.join(OUT, `shot-${cam}.png`);
     fs.writeFileSync(file, encodePNG(frame(cam, o), 3));

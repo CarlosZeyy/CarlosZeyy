@@ -23,6 +23,22 @@ export const ZONE_COLORS = ['#f8b860', '#58f0c0', '#ff7ad0', '#8ac8ff'];
 const al = (hex, a) => `rgba(${parseInt(hex.slice(1, 3), 16)},${parseInt(hex.slice(3, 5), 16)},${parseInt(hex.slice(5, 7), 16)},${a})`;
 function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
 
+// Luzes que piscam: [x, y, w, h, cor, grupo]. Cada grupo tem um período (BLINK_PERIODS) e fica
+// visível na primeira metade dele. São desenhadas por cima da camada main.
+export const BLINK_PERIODS = [1.1, 0.7, 1.9];
+let blinks = [];
+const blink = (x, y, w, h, c, group) => blinks.push([Math.round(x), Math.round(y), w, h, c, group]);
+
+// Carro (30x13) virado para a direita, com o canto superior esquerdo em (0, 0).
+export function carRects(body, hi, dark) {
+  return [
+    [30, 5, 12, 5, 'rgba(255,244,176,0.16)'],
+    [6, 0, 16, 6, dark], [7, 1, 14, 1, hi], [8, 2, 5, 3, '#a8e0ff'], [14, 2, 6, 3, '#a8e0ff'], [8, 2, 5, 1, '#e0f8ff'], [14, 2, 6, 1, '#e0f8ff'],
+    [0, 5, 30, 6, body], [0, 5, 30, 1, hi], [0, 10, 30, 1, dark], [29, 6, 1, 2, '#fff4b0'], [0, 6, 1, 2, '#ff5a5a'],
+    [3, 8, 7, 5, '#14101a'], [20, 8, 7, 5, '#14101a'], [5, 10, 3, 2, '#8a8aa4'], [22, 10, 3, 2, '#8a8aa4'],
+  ];
+}
+
 function layer(parallax, x0, w) {
   const rects = [];
   return {
@@ -135,6 +151,7 @@ function rack(L, x, rnd) {
   for (let y = 122; y < 178; y += 7) {
     L.r(x + 2, y, 18, 5, '#232a3e'); L.r(x + 4, y + 2, 1, 1, '#58f090'); L.r(x + 7, y + 2, 1, 1, rnd() < 0.3 ? '#f8b800' : '#58f090');
     if (rnd() < 0.5) L.r(x + 10, y + 2, 1, 1, '#3cbcfc'); L.r(x + 13, y + 1, 5, 1, '#101420'); L.r(x + 13, y + 3, 5, 1, '#101420');
+    if (rnd() < 0.45) blink(x + (rnd() < 0.5 ? 4 : 7), y + 2, 1, 1, '#232a3e', rnd() < 0.5 ? 1 : 2);
   }
 }
 function terminal(L, s) {
@@ -146,6 +163,7 @@ function terminal(L, s) {
   L.r(x - 8, 154, 7, 1, '#58f090'); L.r(x - 8, 156, 12, 1, '#58f090'); L.r(x - 8, 158, 9, 1, '#58f090'); L.r(x - 8, 160, 4, 1, '#58f090'); L.r(x - 3, 160, 2, 1, '#e0ffe8');
   L.r(x - 12, 168, 24, 4, '#1a1e2e'); L.r(x - 11, 169, 22, 1, '#6a7690'); L.r(x - 11, 171, 22, 1, '#4a546c');
   L.r(x - 11, 175, 2, 2, '#58f090'); L.r(x - 7, 175, 2, 2, '#f8b800'); L.r(x + 2, 175, 9, 1, '#22283a'); L.r(x + 2, 177, 9, 1, '#22283a'); L.r(x + 2, 179, 9, 1, '#22283a');
+  blink(x - 3, 160, 2, 1, '#0b3c24', 1);
   s.py = 110;
 }
 function platform(L, list, x, y, w) {
@@ -176,7 +194,7 @@ function waterTank(L, x) {
 }
 function antenna(L, s) {
   const x = s.x;
-  for (const [d, h] of [[11, 8], [16, 14], [21, 20]]) { L.r(x + d, 48 - h / 2, 1, h, al('#8ac8ff', 0.7)); L.r(x - d, 48 - h / 2, 1, h, al('#8ac8ff', 0.7)); }
+  [[11, 8, 1], [16, 14, 2], [21, 20, 0]].forEach(([d, h, grp]) => { blink(x + d, 48 - h / 2, 1, h, al('#8ac8ff', 0.8), grp); blink(x - d, 48 - h / 2, 1, h, al('#8ac8ff', 0.8), grp); });
   for (let y = 70; y < GROUND; y += 2) {
     const half = Math.round(2 + (y - 70) * 0.1);
     L.r(x - half, y, 2, 2, '#b0b0c8'); L.r(x + half - 1, y, 2, 2, '#6a6a84');
@@ -184,7 +202,8 @@ function antenna(L, s) {
     if ((y - 70) % 14 === 6) L.r(x - half + 2, y, half * 2 - 3, 1, '#5a5a72');
   }
   L.r(x - 1, 50, 2, 20, '#b0b0c8'); L.r(x, 50, 1, 20, '#6a6a84');
-  L.r(x - 7, 40, 15, 15, al('#ff4040', 0.14)); L.r(x - 4, 43, 9, 9, al('#ff4040', 0.28)); L.r(x - 1, 46, 3, 3, '#ff6a6a'); L.r(x, 46, 1, 1, '#ffd0d0');
+  L.r(x - 1, 46, 3, 3, '#8a2c2c');
+  blink(x - 7, 40, 15, 15, al('#ff4040', 0.16), 0); blink(x - 4, 43, 9, 9, al('#ff4040', 0.3), 0); blink(x - 1, 46, 3, 3, '#ff6a6a', 0); blink(x, 46, 1, 1, '#ffd0d0', 0);
   L.r(x + 4, 92, 11, 11, '#d0d0e0'); L.r(x + 5, 93, 9, 9, '#9a9ab4'); L.r(x + 7, 95, 5, 5, '#6a6a84'); L.r(x + 9, 97, 1, 1, '#f6f6fa');
   s.py = 100;
 }
@@ -197,6 +216,7 @@ function gate(L, x, i) {
 
 export function buildWorld() {
   const rnd = rng(20261109);
+  blinks = [];
   const far = layer(0.25, -80, 1010), mid = layer(0.5, -100, 1530), main = layer(1, -160, WORLD_W + 160);
   skyline(far, rnd, { minW: 18, maxW: 44, minH: 30, maxH: 92, gap: 14, body: '#241e4a', edge: '#30285c', win: 2, lit: 0.14, winOn: '#f8d878', winAlt: '#ff9a6a' });
   skyline(mid, rnd, { minW: 36, maxW: 76, minH: 26, maxH: 78, gap: 46, body: '#352c62', edge: '#4c4284', stripe: '#2a2250', win: 3, lit: 0.2, winOn: '#ffe08a', winAlt: '#8ae8ff' });
@@ -239,5 +259,11 @@ export function buildWorld() {
   const chips = CHIPS.map(c => ({ ...c, x: Z(1) + c.dx }));
   const srnd = rng(77);
   const stars = Array.from({ length: 70 }, () => [Math.floor(srnd() * VIEW_W), Math.floor(srnd() * 120), srnd() < 0.2 ? 2 : 1, srnd() < 0.5 ? '#f6f6fa' : '#a8b0ff']);
-  return { layers: { far, mid, main }, stops, chips, platforms, stars };
+  // carros nas duas ruas (fases 1 e 3): andam para a direita e reaparecem no começo do trecho
+  const cars = [
+    { from: main.x0, to: Z(1), y: GROUND + 18, speed: 150, offset: 0, rects: carRects('#d83c3c', '#ff7a6a', '#8a1c24') },
+    { from: Z(2), to: Z(3), y: GROUND + 18, speed: 120, offset: 200, rects: carRects('#f8b800', '#ffe08a', '#a86c00') },
+    { from: Z(2), to: Z(3), y: GROUND + 19, speed: 185, offset: 520, rects: carRects('#3c7cd8', '#8ac8ff', '#1c3c8a') },
+  ];
+  return { layers: { far, mid, main }, stops, chips, platforms, stars, blinks, cars };
 }

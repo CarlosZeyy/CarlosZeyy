@@ -21,7 +21,7 @@ function check(name, grid) {
     for (const ch of row) if (ch !== '.' && !COLORS[ch]) throw new Error(`${name}: cor desconhecida '${ch}' na linha ${y}`);
   });
 }
-const all = { ...SPRITES, idle0: P.idle[0], idle1: P.idle[1], jump: P.jump, fall: P.fall };
+const all = { ...SPRITES, idle0: P.idle[0], idle1: P.idle[1], jump: P.jump, fall: P.fall, point: P.point, cheer0: P.cheer[0], cheer1: P.cheer[1] };
 P.walk.forEach((f, i) => { all[`walk${i}`] = f; });
 for (const [n, g] of Object.entries(all)) check(n, g);
 
@@ -57,9 +57,7 @@ let x = 400;
 for (const f of P.walk) { draw(f, x, F1 - P.h * 4 + 4, 4); x += 122; }
 // linha de baixo: parado (2 quadros), pulo, queda em 4x; depois tamanho de jogo (2x) e itens
 x = 400;
-for (const f of [P.idle[0], P.idle[1], P.jump, P.fall]) { draw(f, x, F2 - P.h * 4 + 4, 4); x += 150; }
-x += 20;
-for (const f of P.walk) { draw(f, x, F2 - P.h * 2 + 2, 2); x += 44; }
+for (const f of [P.idle[0], P.jump, P.fall, P.point, P.cheer[0], P.cheer[1]]) { draw(f, x, F2 - P.h * 4 + 4, 4); x += 150; }
 
 // ---------- PNG ----------
 const crcT = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });

@@ -6,6 +6,14 @@
 <title>Carlos Moises — Full-Stack Quest</title>
 <meta name="description" content="Um README jogável: ande pelo cenário e conheça as skills, os projetos e os contatos de Carlos Moises, desenvolvedor full stack.">
 <meta name="theme-color" content="#0a0816">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carlos Moises — Full-Stack Quest">
+<meta property="og:description" content="Um README jogável em pixel art 16-bit: skills, projetos e contato de um desenvolvedor full stack.">
+<meta property="og:url" content="https://carloszeyy.github.io/CarlosZeyy/">
+<meta property="og:image" content="https://carloszeyy.github.io/CarlosZeyy/og.png">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="648">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Crect width='12' height='12' fill='%2314101a'/%3E%3Crect x='2' y='2' width='8' height='8' fill='%2358d854'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%230b5c2e'/%3E%3C/svg%3E">
 <style>
   * { box-sizing: border-box; }
@@ -21,27 +29,35 @@
   footer { height: 34px; display: flex; gap: 18px; align-items: center; }
   a { color: #8ae8ff; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .pad { position: absolute; bottom: 4%; display: none; gap: 10px; }
-  .pad.l { left: 3%; } .pad.r { right: 3%; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .pad { position: fixed; bottom: max(14px, env(safe-area-inset-bottom)); display: none; gap: 12px; z-index: 2; }
+  .pad.l { left: max(14px, env(safe-area-inset-left)); } .pad.r { right: max(14px, env(safe-area-inset-right)); }
   .pad button {
-    width: 15vmin; height: 15vmin; max-width: 76px; max-height: 76px; border-radius: 50%;
-    border: 2px solid rgba(246,246,250,.55); background: rgba(20,16,26,.45); color: #f6f6fa;
-    font: 700 18px ui-monospace, monospace; touch-action: none;
+    width: 17vmin; height: 17vmin; max-width: 78px; max-height: 78px; border-radius: 50%; padding: 0;
+    border: 2px solid rgba(246,246,250,.55); background: rgba(20,16,26,.5); color: #f6f6fa;
+    font: 700 20px ui-monospace, monospace; touch-action: none;
   }
-  .pad button:active, .pad button.on { background: rgba(138,232,255,.45); }
-  @media (pointer: coarse) { .pad { display: flex; } footer .keys { display: none; } }
+  .pad button.on { background: rgba(138,232,255,.5); }
+  @media (pointer: coarse) {
+    .pad { display: flex; }
+    footer .keys { display: none; }
+    /* em pé, o jogo fica no alto e os botões embaixo, sem cobrir a tela */
+    @media (orientation: portrait) { body { justify-content: flex-start; padding-top: 12vh; } footer { margin-top: 8px; } }
+  }
 </style>
 </head>
 <body>
+  <h1 class="sr-only">Carlos Moises — Full-Stack Quest</h1>
   <div id="stage">
-    <canvas id="game" width="384" height="216" aria-label="Jogo Full-Stack Quest"></canvas>
-    <div class="pad l"><button data-k="left" aria-label="Esquerda">◀</button><button data-k="right" aria-label="Direita">▶</button></div>
-    <div class="pad r"><button data-k="act" aria-label="Interagir">E</button><button data-k="jump" aria-label="Pular">▲</button></div>
+    <canvas id="game" width="384" height="216" role="img" aria-label="Jogo Full-Stack Quest. O conteúdo em texto está logo abaixo."></canvas>
   </div>
+  <div class="pad l"><button data-k="left" aria-label="Esquerda">◀</button><button data-k="right" aria-label="Direita">▶</button></div>
+  <div class="pad r"><button data-k="act" aria-label="Interagir">E</button><button data-k="jump" aria-label="Pular">▲</button></div>
   <footer>
-    <span class="keys">← → andar · espaço pular · E interagir · M som</span>
+    <span class="keys">← → andar · espaço pular · E interagir · M som · R recomeçar</span>
     <a href="https://github.com/CarlosZeyy">← voltar ao GitHub</a>
   </footer>
+  <section id="info" class="sr-only" aria-label="Conteúdo do jogo em texto"></section>
   <script type="module" src="game.js"></script>
 </body>
 </html>

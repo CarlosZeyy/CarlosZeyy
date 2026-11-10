@@ -68,13 +68,14 @@ export function centerText(str, y, color, scale = 1) {
   const s = scale;
   return [...textRects(str, center(str, s) + s, y + s, '#14101a', s), ...textRects(str, center(str, s), y, color, s)];
 }
-export function bannerRects(i, color) {
-  const a = `FASE ${i + 1}`;
+// faixa central: uma linha pequena em cima e uma grande embaixo
+export function messageRects(small, big, color) {
   return [
     [0, 70, VIEW_W, 46, 'rgba(10,8,30,0.6)'], [0, 70, VIEW_W, 1, color], [0, 115, VIEW_W, 1, color],
-    ...centerText(a, 78, '#f6f6fa'), ...centerText(ZONES[i].name, 91, color, 2),
+    ...centerText(small, 78, '#f6f6fa'), ...centerText(big, 91, color, 2),
   ];
 }
+export const bannerRects = (i, color) => messageRects(`FASE ${i + 1}`, ZONES[i].name, color);
 export function promptRects(x, y) {
   return [
     [x - 6, y, 13, 13, '#14101a'], [x - 5, y + 1, 11, 11, '#f6f6fa'], [x - 5, y + 10, 11, 2, '#b8b8c0'],

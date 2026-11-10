@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildWorld, VIEW_W, VIEW_H, GROUND, ZONE_W, SPEED, WALK_CYCLE, SKIES, SKY_BANDS, STAR_ALPHA } from '../../game/shared/world.js';
+import { buildWorld, VIEW_W, VIEW_H, GROUND, ZONE_W, SPEED, WALK_CYCLE, SKIES, SKY_BANDS, STAR_ALPHA, BLINK_PERIODS } from '../../game/shared/world.js';
 import { buildPlayer } from '../../game/shared/character.js';
 import { SPRITES, gridRects } from '../../game/shared/sprites.js';
 import { textRects, shadowText, textWidth, CHAR_W } from '../../game/shared/font.js';
@@ -64,6 +64,8 @@ function visible(name, intervals) {
   return frames(name, pairs, 'opacity', 'step-end');
 }
 const g = (cls, inner, extra = '') => `<g class="${cls}"${extra}>${inner}</g>`;
+let defs = '';
+css.push('@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:0}}', '.blink{animation:blink .9s step-end infinite}');
 const P_ = rectsToPaths;
 
 // câmera por camada
@@ -94,7 +96,18 @@ world.chips.forEach((c, i) => {
   chips += `<use href="#chip" xlink:href="#chip" x="${c.x}" y="${c.y}"${cls}/>`;
 });
 css.push('@keyframes bob{0%{transform:translateY(0)}50%{transform:translateY(-3px)}100%{transform:translateY(0)}}', '.bob{animation:bob 1.2s steps(6) infinite}');
-const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects) + (k === 'main' ? g('bob', chips) : ''));
+let extras = '';
+BLINK_PERIODS.forEach((period, i) => {
+  css.push(`.bl${i}{animation:blink ${period}s step-end infinite}`);
+  extras += g(`bl${i}`, P_(world.blinks.filter(b => b[5] === i)));
+});
+world.cars.forEach((c, i) => {
+  const span = c.to - c.from + 84, dur = span / c.speed;
+  css.push(`@keyframes car${i}{0%{transform:translateX(${c.from - 42}px)}100%{transform:translateX(${c.to + 42}px)}}`, `.car${i}{animation:car${i} ${+dur.toFixed(2)}s linear ${-(c.offset / c.speed).toFixed(2)}s infinite}`);
+  defs += `<clipPath id="road${i}"><rect x="${c.from}" y="0" width="${c.to - c.from}" height="${VIEW_H}"/></clipPath>`;
+  extras += `<g clip-path="url(#road${i})"><g class="car${i}"><g transform="translate(0,${c.y})">${P_(c.rects)}</g></g></g>`;
+});
+const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects) + (k === 'main' ? extras + g('bob', chips) : ''));
 
 // ---------- personagem ----------
 css.push('@keyframes wf{0%{opacity:1}12.5%{opacity:0}100%{opacity:0}}', `.wf{opacity:0;animation:wf ${WALK_CYCLE}s step-end infinite}`);
@@ -102,8 +115,10 @@ css.push('@keyframes idf{0%{opacity:1}50%{opacity:0}100%{opacity:0}}', '.idf{opa
 const sprite = grid => P_(gridRects(grid));
 const walkSvg = P.walk.map((f, i) => `<g class="wf" style="animation-delay:${+(i * WALK_CYCLE / 8).toFixed(4)}s">${sprite(f)}</g>`).join('');
 const idleSvg = P.idle.map((f, i) => `<g class="idf" style="animation-delay:${i * 0.6}s">${sprite(f)}</g>`).join('');
-const idleTimes = [[0, walks[0][0]], ...pauses.map(([a, b], i) => [a, i === pauses.length - 1 ? LOOP : b])];
-const player = `<g transform="translate(${PX - P.footX},${GROUND - P.floorY})">${g(visible('v-walk', walks), walkSvg)}${g(visible('v-idle', idleTimes), idleSvg)}</g>`;
+const lastPause = pauses[pauses.length - 1];
+const idleTimes = [[0, walks[0][0]], [lastPause[1] - 1.6, LOOP]];
+const pointTimes = pauses.map(([a, b], i) => [a, i === pauses.length - 1 ? b - 1.6 : b]);
+const player = `<g transform="translate(${PX - P.footX},${GROUND - P.floorY})">${g(visible('v-walk', walks), walkSvg)}${g(visible('v-idle', idleTimes), idleSvg)}${g(visible('v-point', pointTimes), sprite(P.point))}</g>`;
 
 // ---------- HUD ----------
 let hud = '';
@@ -155,7 +170,6 @@ bootLines.forEach(([text, t, color, typed], i) => {
 });
 boot = g(visible('v-boot', [[0, T_TITLE]]), boot);
 
-css.push('@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:0}}', '.blink{animation:blink .9s step-end infinite}');
 const title = g(visible('v-title', [[T_TITLE, T_GAME]]), P_(ui.titleRects()) + g('blink', P_(ui.centerText('PRESS START', 150, '#f6f6fa'))));
 const flashAt = t => [[t - 0.02, 0], [t, 0.85], [t + 0.35, 0]];
 const flash = `<rect class="${frames('flash', [[0, 0], ...flashAt(T_TITLE), ...flashAt(T_GAME), [LOOP, 0]], 'opacity', 'linear')}" width="${VIEW_W}" height="${VIEW_H}" fill="#f6f6fa"/>`;
@@ -177,6 +191,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.
 <clipPath id="screen"><rect width="${VIEW_W}" height="${VIEW_H}"/></clipPath>
 <clipPath id="dlgclip"><rect x="${ui.DLG.x + ui.DLG.pad}" y="0" width="${COLS * CHAR_W}" height="${VIEW_H}"/></clipPath>
 <g id="chip">${P_(gridRects(SPRITES.chip))}</g>
+${defs}
 <pattern id="scan" width="2" height="2" patternUnits="userSpaceOnUse"><rect y="1" width="2" height="1" fill="#000" fill-opacity=".1"/></pattern>
 </defs>
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="7" fill="#0a0816" stroke="#3a3470" shape-rendering="geometricPrecision"/>

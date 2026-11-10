@@ -177,6 +177,12 @@ export function buildPlayer() {
     idle: [render(STAND), render({ ...STAND, breath: 1 })],
     walk: Array.from({ length: WALK_FRAMES }, (_, i) => render(walkPose(i))),
     jump: render({ nearThigh: 55, nearKnee: 75, farThigh: -20, farKnee: 35, nearArm: 85, nearElbow: 50, farArm: -35, farElbow: 30, lean: 1, air: true }),
+    // apontando para o objeto (painel aberto) e comemorando (final)
+    point: render({ ...STAND, nearArm: 62, nearElbow: 38 }),
+    cheer: [
+      render({ ...STAND, nearArm: 205, nearElbow: -25, farArm: 150, farElbow: 25 }),
+      render({ ...STAND, nearArm: 222, nearElbow: -30, farArm: 130, farElbow: 35, breath: 1 }),
+    ],
     fall: render({ nearThigh: 22, nearKnee: 25, farThigh: -12, farKnee: 30, nearArm: 55, nearElbow: 30, farArm: -50, farElbow: 20, air: true }),
   };
 }
