@@ -38,6 +38,7 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 // ---------- estado ----------
 const START = { x: 60, y: GROUND, vy: 0, face: 1, grounded: true, moving: false, walkT: 0, air: 0, wantJump: 0, cam: 0, zone: 0, dialog: null, finale: 0, done: false };
 const S = { mode: 'title', time: 0, banner: 0, got: new Set(), pops: [], seen: new Set(), ...START };
+let dust = []; // poeirinha dos passos e da aterrissagem
 function restart() {
   Object.assign(S, START, { banner: 2.4 });
   S.got.clear(); S.seen.clear(); S.pops.length = 0;
@@ -49,13 +50,14 @@ const KEYS = {
   ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right',
   Space: 'jump', ArrowUp: 'jump', KeyW: 'jump', KeyE: 'act', Enter: 'act', Escape: 'close', KeyM: 'mute', KeyR: 'restart',
 };
-function press(k) { if (!down.has(k)) hit.add(k); down.add(k); audioInit(); }
+let tapJump = false; // no toque o pulo é sempre completo: um toque é curto demais para medir "segurar"
+function press(k, viaTouch = false) { if (!down.has(k)) hit.add(k); down.add(k); if (k === 'jump') tapJump = viaTouch; audioInit(); }
 addEventListener('keydown', e => { const k = KEYS[e.code]; if (!k || e.ctrlKey || e.metaKey || e.altKey) return; e.preventDefault(); press(k); });
 addEventListener('keyup', e => { const k = KEYS[e.code]; if (k) down.delete(k); });
 addEventListener('blur', () => down.clear());
 for (const b of document.querySelectorAll('[data-k]')) {
   const k = b.dataset.k;
-  b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.add('on'); press(k); });
+  b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.add('on'); press(k, true); });
   for (const ev of ['pointerup', 'pointercancel', 'pointerleave']) b.addEventListener(ev, () => { b.classList.remove('on'); down.delete(k); });
   b.addEventListener('contextmenu', e => e.preventDefault());
 }
@@ -109,6 +111,8 @@ function update(dt) {
   S.finale = Math.max(0, S.finale - dt);
   for (const p of S.pops) p.t += dt;
   S.pops = S.pops.filter(p => p.t < 1.1);
+  for (const d of dust) { d.t += dt; d.x += d.vx * dt; d.y += d.vy * dt; }
+  dust = dust.filter(d => d.t < 0.4);
 
   if (S.dialog) {
     const d = S.dialog;
@@ -129,13 +133,16 @@ function update(dt) {
   S.air = S.grounded ? 0 : S.air + dt;
   S.wantJump = hit.has('jump') ? JUMP_BUFFER : Math.max(0, S.wantJump - dt);
   if (S.wantJump > 0 && S.air < COYOTE && S.vy >= 0) { S.vy = -JUMP; S.grounded = false; S.air = COYOTE; S.wantJump = 0; beep(440, 0.1, 'square', 0.03); }
-  if (S.vy < -140 && !down.has('jump')) S.vy = -140; // soltar o botão encurta o pulo
+  if (S.vy < -140 && !down.has('jump') && !tapJump) S.vy = -140; // no teclado, soltar a tecla encurta o pulo
 
-  const prevY = S.y;
+  const prevY = S.y, wasGrounded = S.grounded;
   S.vy += GRAVITY * dt; S.y += S.vy * dt;
   let floor = GROUND;
   if (S.vy >= 0) for (const p of world.platforms) if (S.x > p.x - 5 && S.x < p.x + p.w + 5 && prevY <= p.y && S.y >= p.y) floor = Math.min(floor, p.y);
   if (S.y >= floor) { S.y = floor; S.vy = 0; S.grounded = true; } else S.grounded = false;
+  if (S.grounded && !wasGrounded) for (let i = 0; i < 5; i++) dust.push({ x: S.x + (i - 2) * 3, y: S.y - 2, vx: (i - 2) * 10, vy: -7, t: 0 });
+  const step = WALK_CYCLE / 2;
+  if (S.grounded && S.moving && Math.floor(S.walkT / step) !== Math.floor((S.walkT - dt) / step)) dust.push({ x: S.x - S.face * 7, y: S.y - 2, vx: -S.face * 12, vy: -6, t: 0 });
 
   for (const c of world.chips) {
     if (S.got.has(c.name)) continue;
@@ -326,6 +333,8 @@ function drawWorld(cam) {
     const sx = c.x - cam;
     if (sx > -12 && sx < VIEW_W) L.drawImage(chipImg, sx, c.y + Math.round(Math.sin(S.time * 4 + i) * 2));
   });
+
+  for (const d of dust) { L.fillStyle = `rgba(214,214,232,${(0.5 * (1 - d.t / 0.4)).toFixed(2)})`; L.fillRect(Math.round(d.x - cam), Math.round(d.y), d.t < 0.2 ? 2 : 1, d.t < 0.2 ? 2 : 1); }
 
   // sombra no chão (ou na plataforma) logo abaixo do personagem
   let floor = GROUND;
