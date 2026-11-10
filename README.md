@@ -25,8 +25,8 @@
 
 <br/>
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=CarlosZeyy&amp;show_icons=true&amp;count_private=true&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_border=true&amp;title_color=FFD860&amp;icon_color=8AE8FF&amp;text_color=A8B0FF&amp;bg_color=0A0816&amp;card_width=500" alt="Estatísticas do GitHub" />
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CarlosZeyy&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;title_color=FFD860&amp;text_color=A8B0FF&amp;bg_color=0A0816&amp;card_width=500" alt="Linguagens mais usadas" />
+<!-- Card próprio, gerado a cada 12 h por scripts/game/build-stats.js (workflow snake.yml) -->
+<img width="100%" src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/output/stats.svg" alt="Estatísticas do GitHub e linguagens mais usadas" />
 
 </div>
 

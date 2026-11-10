@@ -17,6 +17,7 @@ Comandos, rodados nesta pasta (só Node, sem `npm install`):
 - `node build-svg.js` gera `assets/game.svg`, o hero animado do README.
   Depois de gerar, aumente o `?v=` da URL no `README.md` para furar o cache do GitHub.
 - `node serve.js` sobe o jogo em `http://127.0.0.1:4173/game/` (módulos ES não abrem via `file://`).
+- `GITHUB_TOKEN=$(gh auth token) node build-stats.js out/stats.svg` gera o card PLAYER STATS (no GitHub Actions ele roda sozinho a cada 12 h).
 - `node preview.js` gera `out/sprites.png` (folha do personagem) e `out/walk.html` (animação).
 - `node shots.js` gera `out/shot-*.png`, quadros estáticos de cada fase.
 
