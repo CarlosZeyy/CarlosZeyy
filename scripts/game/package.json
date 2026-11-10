@@ -1,0 +1,10 @@
+{
+  "name": "carlos-quest-tools",
+  "private": true,
+  "type": "module",
+  "description": "Gera a folha de sprites e o SVG animado do README a partir de game/shared",
+  "scripts": {
+    "preview": "node preview.js",
+    "build": "node build-svg.js"
+  }
+}

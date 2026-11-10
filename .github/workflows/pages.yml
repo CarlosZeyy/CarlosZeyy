@@ -1,0 +1,37 @@
+name: Publicar jogo no GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "game/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:          # permite disparar manualmente na aba Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Enviar a pasta game/
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: game
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

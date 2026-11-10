@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Carlos Moises — Full-Stack Quest</title>
+<meta name="description" content="Um README jogável: ande pelo cenário e conheça as skills, os projetos e os contatos de Carlos Moises, desenvolvedor full stack.">
+<meta name="theme-color" content="#0a0816">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Crect width='12' height='12' fill='%2314101a'/%3E%3Crect x='2' y='2' width='8' height='8' fill='%2358d854'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%230b5c2e'/%3E%3C/svg%3E">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: #0a0816; color: #a8b0ff; overflow: hidden;
+    font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    touch-action: none; -webkit-user-select: none; user-select: none;
+  }
+  #stage { position: relative; width: min(100vw, calc((100vh - 34px) * 16 / 9)); aspect-ratio: 16 / 9; }
+  canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; image-rendering: crisp-edges; background: #0a0816; }
+  footer { height: 34px; display: flex; gap: 18px; align-items: center; }
+  a { color: #8ae8ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .pad { position: absolute; bottom: 4%; display: none; gap: 10px; }
+  .pad.l { left: 3%; } .pad.r { right: 3%; }
+  .pad button {
+    width: 15vmin; height: 15vmin; max-width: 76px; max-height: 76px; border-radius: 50%;
+    border: 2px solid rgba(246,246,250,.55); background: rgba(20,16,26,.45); color: #f6f6fa;
+    font: 700 18px ui-monospace, monospace; touch-action: none;
+  }
+  .pad button:active, .pad button.on { background: rgba(138,232,255,.45); }
+  @media (pointer: coarse) { .pad { display: flex; } footer .keys { display: none; } }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="384" height="216" aria-label="Jogo Full-Stack Quest"></canvas>
+    <div class="pad l"><button data-k="left" aria-label="Esquerda">◀</button><button data-k="right" aria-label="Direita">▶</button></div>
+    <div class="pad r"><button data-k="act" aria-label="Interagir">E</button><button data-k="jump" aria-label="Pular">▲</button></div>
+  </div>
+  <footer>
+    <span class="keys">← → andar · espaço pular · E interagir · M som</span>
+    <a href="https://github.com/CarlosZeyy">← voltar ao GitHub</a>
+  </footer>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
