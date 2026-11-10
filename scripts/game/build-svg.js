@@ -14,7 +14,7 @@ import { rectsToPaths } from './raster.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : path.resolve(here, '../../assets/game.svg');
-const world = buildWorld(), P = buildPlayer();
+const world = buildWorld({ texture: false }), P = buildPlayer();
 
 // ---------- linha do tempo ----------
 const PX = 130;        // x do personagem na tela
@@ -69,7 +69,7 @@ css.push('@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:0}}', '.blink
 const P_ = rectsToPaths;
 
 // câmera por camada
-for (const k of ['far', 'mid', 'main']) {
+for (const k of ['far', 'mid', 'main', 'fg']) {
   const p = world.layers[k].parallax;
   frames(`cam-${k}`, keys.map(([t, c]) => [t, `translateX(${-Math.round(c * p)}px)`]), 'transform', 'linear');
 }
@@ -142,7 +142,7 @@ world.cars.forEach((c, i) => {
 // luzes: brilho suave por cima do cenário (mesmas fontes de luz do jogo)
 const LIGHT_GAIN = 0.62;
 const lightsSvg = smooth(world.lights.map(l => glowEl(l.x, l.y, l.rx, l.ry, l.color, l.a * LIGHT_GAIN, l.blink >= 0 ? `bl${l.blink}` : '')).join(''));
-const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects) + (k === 'main' ? extras + g('bob', chips) + lightsSvg : ''));
+const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects, 12) + (k === 'main' ? extras + g('bob', chips) + lightsSvg : ''));
 
 // chuva na fase 3: um padrão de riscos que desliza na diagonal
 const RAIN = { w: 96, h: 120 };
@@ -253,6 +253,7 @@ ${layerSvg('mid')}
 ${haze(0.24, 90)}
 ${layerSvg('main')}
 ${player}
+${layerSvg('fg')}
 ${rain}
 ${vignette}
 ${g(visible('v-hud', [[T_GAME, T_END]]), hud)}

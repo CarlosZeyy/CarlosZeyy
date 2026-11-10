@@ -2,7 +2,7 @@
 <!-- Gerado por scripts/game/build-svg.js a partir de game/shared. Ao trocar o SVG, aumente o ?v= para furar o cache. -->
 
 <a href="https://carloszeyy.github.io/CarlosZeyy/">
-  <img alt="Carlos Moises — Full-Stack Quest: jogo 16-bit em que o personagem percorre origem, skills, projetos e contato. Clique para jogar." src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/game.svg?v=3" width="100%">
+  <img alt="Carlos Moises — Full-Stack Quest: jogo 16-bit em que o personagem percorre origem, skills, projetos e contato. Clique para jogar." src="https://raw.githubusercontent.com/CarlosZeyy/CarlosZeyy/main/assets/game.svg?v=4" width="100%">
 </a>
 
 <div align="center">

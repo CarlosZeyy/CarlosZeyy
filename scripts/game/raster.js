@@ -45,20 +45,24 @@ export function rasterize(rects) {
 }
 
 const hex2 = v => Math.round(v).toString(16).padStart(2, '0');
+// arredonda um canal para múltiplos de q: menos cores distintas, SVG bem menor
+const quant = (v, q) => (q > 1 ? Math.min(255, Math.round(v / q) * q) : v);
 
 // Um <path> por cor; sequências horizontais iguais em linhas consecutivas viram um retângulo só.
-export function toPaths(img) {
+export function toPaths(img, q = 1) {
   const { w, h, x0, y0, data } = img;
+  const col = o => `#${hex2(quant(data[o], q))}${hex2(quant(data[o + 1], q))}${hex2(quant(data[o + 2], q))}`;
+  const alpha = o => (q > 1 ? Math.round(data[o + 3] * 10) / 10 : Math.round(data[o + 3] * 100) / 100);
   const byColor = new Map();
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w;) {
-      const o = (y * w + x) * 4, a = Math.round(data[o + 3] * 100) / 100;
+      const o = (y * w + x) * 4, a = alpha(o);
       if (a === 0) { x++; continue; }
-      const key = `#${hex2(data[o])}${hex2(data[o + 1])}${hex2(data[o + 2])}|${a}`;
+      const key = `${col(o)}|${a}`;
       let n = 1;
       while (x + n < w) {
-        const p = o + n * 4, pa = Math.round(data[p + 3] * 100) / 100;
-        if (pa === 0 || `#${hex2(data[p])}${hex2(data[p + 1])}${hex2(data[p + 2])}|${pa}` !== key) break;
+        const p = o + n * 4, pa = alpha(p);
+        if (pa === 0 || `${col(p)}|${pa}` !== key) break;
         n++;
       }
       let c = byColor.get(key);
@@ -77,7 +81,7 @@ export function toPaths(img) {
   }
   return out;
 }
-export const rectsToPaths = rects => toPaths(rasterize(rects));
+export const rectsToPaths = (rects, q = 1) => toPaths(rasterize(rects), q);
 
 // ---------- PNG ----------
 const crcT = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });

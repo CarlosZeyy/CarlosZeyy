@@ -1,7 +1,7 @@
 // Full-Stack Quest: jogo de plataforma do perfil. JS puro, sem dependências.
 import { buildPlayer } from './shared/character.js';
 import { SPRITES, gridRects } from './shared/sprites.js';
-import { buildWorld, VIEW_W, VIEW_H, GROUND, ZONE_W, WORLD_W, SPEED, WALK_CYCLE, SKIES, SKY_BANDS, STAR_ALPHA, ZONE_COLORS, BLINK_PERIODS } from './shared/world.js';
+import { buildWorld, VIEW_W, VIEW_H, GROUND, ZONE_W, WORLD_W, SPEED, WALK_CYCLE, SKIES, SKY_BANDS, STAR_ALPHA, ZONE_COLORS, BLINK_PERIODS, AMBIENT } from './shared/world.js';
 import { shadowText, textWidth } from './shared/font.js';
 import { ZONES } from './shared/content.js';
 import * as ui from './shared/ui.js';
@@ -22,7 +22,7 @@ function bake(rects, x0, w, h, flip) {
   for (const [x, y, rw, rh, col] of rects) { g.fillStyle = col; g.fillRect(x - x0, y, rw, rh); }
   return c;
 }
-const layers = ['far', 'mid', 'main'].map(k => { const l = world.layers[k]; return { ...l, img: bake(l.rects, l.x0, l.w, VIEW_H) }; });
+const layers = ['far', 'mid', 'main', 'fg'].map(k => { const l = world.layers[k]; return { ...l, img: bake(l.rects, l.x0, l.w, VIEW_H) }; });
 const sprite = grid => [bake(gridRects(grid), 0, P.w, P.h), bake(gridRects(grid), 0, P.w, P.h, true)];
 const frames = {
   idle: P.idle.map(sprite), walk: P.walk.map(sprite), cheer: P.cheer.map(sprite),
@@ -397,10 +397,14 @@ function render() {
   haze(m, 0.24, 90);
 
   drawWorld(cam);
+  const amb = AMBIENT[m.a].map((v, i) => lerp(v, AMBIENT[m.b][i], m.k));
+  L.globalCompositeOperation = 'source-atop'; L.fillStyle = rgba(amb.slice(0, 3).map(Math.round), amb[3]); L.fillRect(0, 0, VIEW_W, VIEW_H); L.globalCompositeOperation = 'source-over';
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(lo, 0, 0);
   drawReflections(cam);
   drawLights(cam);
+  ctx.imageSmoothingEnabled = true; ctx.globalAlpha = 0.94;        // primeiro plano: silhuetas fora de foco
+  ctx.drawImage(layers[3].img, layers[3].x0 - S.cam * layers[3].parallax, 0); ctx.globalAlpha = 1;
   drawWeather(m, cam);
 
   // bloom: o que é claro vaza um pouco de luz

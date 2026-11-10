@@ -26,8 +26,9 @@ export const STOPS = [
   {
     id: 'systelos', zone: 0, dx: 350, kind: 'building', label: 'SYSTELOS', title: 'WORK',
     rows: [
-      ['WORK', 'Analista de Sistemas @ Systelos'],
-      ['SHIPPING', 'Enfermex · MV Vidros · Systelos'],
+      ['COMPANY', 'Systelos'],
+      ['ROLE', 'Desenvolvedor Full Stack & Analista de Sistemas'],
+      ['STACK', 'Next.js, NestJS, Node.js, SQL, Prisma'],
     ],
   },
   {
@@ -43,13 +44,13 @@ export const STOPS = [
     rows: [
       ['CORE.LANG', 'TypeScript, JavaScript, Java, SQL'],
       ['CORE.FRONTEND', 'React, Next.js, Vite, Tailwind CSS'],
-      ['CORE.BACKEND', 'Node.js, Express, Spring Boot, REST'],
+      ['CORE.BACKEND', 'Node.js, NestJS, Express, Spring Boot, REST'],
     ],
   },
   {
     id: 'data', zone: 1, dx: 340, kind: 'terminal', label: 'DATA', title: 'DATA & INFRA',
     rows: [
-      ['CORE.DATABASE', 'PostgreSQL, Supabase, MySQL, MongoDB'],
+      ['CORE.DATABASE', 'PostgreSQL, Prisma, Supabase, MySQL, MongoDB'],
       ['CORE.INFRA', 'Docker, GitHub Actions, Azure, Linux, Vercel'],
     ],
   },
