@@ -40,8 +40,6 @@ export function frame(cam, o = {}) {
 if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
   const cams = process.argv.slice(2).map(Number);
   const list = cams.length ? cams.map(c => [c, {}]) : [[-140, { title: true }], [20, {}], [220, { dialog: false }], [628, {}], [800, { walk: true }], [1178, {}], [1500, { banner: true, walk: true }], [1900, { walk: true }], [2048, {}]];
-  // imagem de compartilhamento do jogo (og:image)
-  if (!cams.length) fs.writeFileSync(path.join(OUT, '../../../game/og.png'), encodePNG(frame(-140, { title: true, dialog: false }), 3));
   for (const [cam, o] of list) {
     const file = path.join(OUT, `shot-${cam}.png`);
     fs.writeFileSync(file, encodePNG(frame(cam, o), 3));

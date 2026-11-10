@@ -29,6 +29,11 @@ export const BLINK_PERIODS = [1.1, 0.7, 1.9];
 let blinks = [];
 const blink = (x, y, w, h, c, group) => blinks.push([Math.round(x), Math.round(y), w, h, c, group]);
 
+// Fontes de luz: elipses de brilho suave somadas por cima da cena (no jogo e no SVG).
+// blink >= 0 liga a luz ao grupo de pisca correspondente.
+let lights = [];
+const light = (x, y, rx, ry, color, a, blink = -1) => lights.push({ x: Math.round(x), y: Math.round(y), rx: Math.round(rx), ry: Math.round(ry), color, a, blink });
+
 // Carro (30x13) virado para a direita, com o canto superior esquerdo em (0, 0).
 export function carRects(body, hi, dark) {
   return [
@@ -82,6 +87,7 @@ function labFloor(L, x0, x1) {
     L.r(x + 5, GROUND + 7, 2, 2, '#4a5878'); L.r(x + 26, GROUND + 7, 2, 2, '#4a5878'); L.r(x + 5, GROUND + 24, 2, 2, '#4a5878');
   }
   L.r(x0, GROUND, w, 2, '#58f0c0'); L.r(x0, GROUND + 2, w, 2, al('#58f0c0', 0.25));
+  for (let x = x0 + 32; x < x1; x += 64) light(x, GROUND + 1, 46, 9, '#58f0c0', 0.26);
 }
 function rooftop(L, x0, x1, rnd) {
   const w = x1 - x0;
@@ -97,10 +103,10 @@ function rooftop(L, x0, x1, rnd) {
 
 // ---------- objetos ----------
 function lamp(L, x) {
-  L.r(x - 15, 114, 32, 24, al('#ffec96', 0.08)); L.r(x - 10, 118, 22, 15, al('#ffec96', 0.12));
   L.r(x - 2, 180, 6, 4, '#22222e'); L.r(x, 124, 2, 58, '#2a2a3a'); L.r(x + 1, 124, 1, 58, '#4e4e66');
   L.r(x - 7, 123, 16, 2, '#2a2a3a'); L.r(x - 9, 125, 6, 3, '#fff4b0'); L.r(x + 5, 125, 6, 3, '#fff4b0');
   L.r(x - 9, 124, 6, 1, '#2a2a3a'); L.r(x + 5, 124, 6, 1, '#2a2a3a');
+  light(x - 6, 128, 34, 30, '#ffe6a0', 0.5); light(x + 8, 128, 34, 30, '#ffe6a0', 0.5); light(x + 1, GROUND + 4, 50, 9, '#ffe6a0', 0.42);
 }
 function tree(L, x) {
   L.r(x - 2, 158, 5, 26, '#4a3020'); L.r(x - 2, 158, 1, 26, '#6e4a30'); L.r(x + 2, 158, 1, 26, '#2e1c12');
@@ -129,7 +135,7 @@ function building(L, s, rnd) {
   L.r(x0 - 2, top - 4, w + 4, 4, st.trim); L.r(x0 - 2, top - 4, w + 4, 1, st.hi);
   L.r(x0, top, w, st.h, st.wall); L.r(x0, top, 2, st.h, st.hi); L.r(x0 + w - 3, top, 3, st.h, st.sh);
   const tw = textWidth(s.label), sx = Math.round(cx - tw / 2);
-  L.r(sx - 10, top + 3, tw + 20, 21, al(st.neon, 0.14));
+  light(cx, top + 13, tw / 2 + 24, 22, st.neon, 0.5); light(cx, GROUND - 18, w / 2 - 4, 26, st.winLit, 0.2); light(cx, GROUND + 4, w / 2 - 8, 8, st.winLit, 0.34);
   L.r(sx - 7, top + 6, tw + 14, 15, st.signBg); L.r(sx - 7, top + 6, tw + 14, 1, st.neon); L.r(sx - 7, top + 20, tw + 14, 1, st.neon);
   L.text(s.label, sx, top + 10, st.neon);
   for (let wy = top + 30; wy < GROUND - 52; wy += 18) for (let wx = x0 + 9; wx <= x0 + w - 21; wx += 17) {
@@ -164,18 +170,20 @@ function terminal(L, s) {
   L.r(x - 12, 168, 24, 4, '#1a1e2e'); L.r(x - 11, 169, 22, 1, '#6a7690'); L.r(x - 11, 171, 22, 1, '#4a546c');
   L.r(x - 11, 175, 2, 2, '#58f090'); L.r(x - 7, 175, 2, 2, '#f8b800'); L.r(x + 2, 175, 9, 1, '#22283a'); L.r(x + 2, 177, 9, 1, '#22283a'); L.r(x + 2, 179, 9, 1, '#22283a');
   blink(x - 3, 160, 2, 1, '#0b3c24', 1);
+  light(x, 158, 24, 20, '#58f090', 0.42); light(x, 133, tw / 2 + 16, 14, '#58f0c0', 0.36); light(x, GROUND + 3, 26, 7, '#58f090', 0.3);
   s.py = 110;
 }
 function platform(L, list, x, y, w) {
   L.r(x + 2, y + 6, w - 4, 3, al('#58f0c0', 0.18));
   L.r(x, y, w, 6, '#4a5672'); L.r(x, y, w, 1, '#9aa8c8'); L.r(x, y + 5, w, 1, '#2a3248'); L.r(x, y, 1, 6, '#6a7896');
   L.r(x + 3, y + 2, 2, 2, '#2a3248'); L.r(x + w - 5, y + 2, 2, 2, '#2a3248'); L.r(x + 2, y + 6, w - 4, 1, '#58f0c0');
+  light(x + w / 2, y + 8, w / 2 + 6, 10, '#58f0c0', 0.42);
   list.push({ x, y, w });
 }
 function billboard(L, s, color) {
   const x = s.x, tw = textWidth(s.label), w = tw + 14, x0 = Math.round(x - w / 2), y = 134;
   L.r(x - 1, y + 24, 3, GROUND - y - 24, '#3a3a50'); L.r(x - 1, y + 24, 1, GROUND - y - 24, '#5a5a78');
-  L.r(x0 - 3, y - 3, w + 6, 30, al(color, 0.12));
+  light(x, y + 12, w / 2 + 16, 26, color, 0.4); light(x, GROUND + 3, w / 2, 7, color, 0.24);
   L.r(x0, y, w, 24, color); L.r(x0 + 1, y + 1, w - 2, 22, '#12122a'); L.r(x0 + 1, y + 1, w - 2, 1, '#2a2a50');
   L.text(s.label, x0 + 7, y + 6, color);
   L.r(x0 + 7, y + 17, tw, 2, al(color, 0.5)); L.r(x0 + 7, y + 17, Math.round(tw * 0.6), 2, color);
@@ -203,7 +211,7 @@ function antenna(L, s) {
   }
   L.r(x - 1, 50, 2, 20, '#b0b0c8'); L.r(x, 50, 1, 20, '#6a6a84');
   L.r(x - 1, 46, 3, 3, '#8a2c2c');
-  blink(x - 7, 40, 15, 15, al('#ff4040', 0.16), 0); blink(x - 4, 43, 9, 9, al('#ff4040', 0.3), 0); blink(x - 1, 46, 3, 3, '#ff6a6a', 0); blink(x, 46, 1, 1, '#ffd0d0', 0);
+  blink(x - 1, 46, 3, 3, '#ff6a6a', 0); blink(x, 46, 1, 1, '#ffd0d0', 0); light(x, 47, 22, 22, '#ff4040', 0.75, 0);
   L.r(x + 4, 92, 11, 11, '#d0d0e0'); L.r(x + 5, 93, 9, 9, '#9a9ab4'); L.r(x + 7, 95, 5, 5, '#6a6a84'); L.r(x + 9, 97, 1, 1, '#f6f6fa');
   s.py = 100;
 }
@@ -212,11 +220,12 @@ function gate(L, x, i) {
   L.r(x, 92, 3, GROUND - 92, '#2a2a3a'); L.r(x + 1, 92, 1, GROUND - 92, '#5a5a78'); L.r(x - 1, 89, 5, 3, '#f8d878');
   L.r(x + 3, 96, tw + 12, 17, c); L.r(x + 3, 96, tw + 12, 2, al('#ffffff', 0.35)); L.r(x + 3, 111, tw + 12, 2, al('#000000', 0.25));
   L.text(label, x + 9, 101, '#14101a');
+  light(x + 1, 90, 12, 12, '#f8d878', 0.5);
 }
 
 export function buildWorld() {
   const rnd = rng(20261109);
-  blinks = [];
+  blinks = []; lights = [];
   const far = layer(0.25, -80, 1010), mid = layer(0.5, -100, 1530), main = layer(1, -160, WORLD_W + 160);
   skyline(far, rnd, { minW: 18, maxW: 44, minH: 30, maxH: 92, gap: 14, body: '#241e4a', edge: '#30285c', win: 2, lit: 0.14, winOn: '#f8d878', winAlt: '#ff9a6a' });
   skyline(mid, rnd, { minW: 36, maxW: 76, minH: 26, maxH: 78, gap: 46, body: '#352c62', edge: '#4c4284', stripe: '#2a2250', win: 3, lit: 0.2, winOn: '#ffe08a', winAlt: '#8ae8ff' });
@@ -265,5 +274,5 @@ export function buildWorld() {
     { from: Z(2), to: Z(3), y: GROUND + 18, speed: 120, offset: 200, rects: carRects('#f8b800', '#ffe08a', '#a86c00') },
     { from: Z(2), to: Z(3), y: GROUND + 19, speed: 185, offset: 520, rects: carRects('#3c7cd8', '#8ac8ff', '#1c3c8a') },
   ];
-  return { layers: { far, mid, main }, stops, chips, platforms, stars, blinks, cars };
+  return { layers: { far, mid, main }, stops, chips, platforms, stars, blinks, cars, lights };
 }

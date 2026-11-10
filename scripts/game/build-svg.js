@@ -76,11 +76,43 @@ for (const k of ['far', 'mid', 'main']) {
 
 // ---------- céu ----------
 const zoneT = [1, 2, 3].map(i => timeAtCam(i * ZONE_W - PX)); // instante em que ele entra em cada fase
-const skyRects = i => { let y = 0; return SKY_BANDS.map((h, j) => { const r = [0, y, VIEW_W, h, SKIES[i][j]]; y += h; return r; }); };
-let sky = P_(skyRects(0));
+// Céu em degradê (as mesmas cores das faixas do jogo), com sol ou lua e nuvens suaves.
+// Estes elementos são vetoriais de propósito: é a camada "moderna" por trás do pixel art.
+const smooth = inner => `<g shape-rendering="geometricPrecision">${inner}</g>`;
+const bandPos = (() => { let y = 0; return SKY_BANDS.map(h => { const c = (y + h / 2) / GROUND; y += h; return c; }); })();
+const ORBS = [
+  { x: 296, y: 150, r: 19, core: '#ffecaa', halo: '#ff8c46', ha: 0.7 },
+  { x: 318, y: 54, r: 5, core: '#e2e2ff', halo: '#968cdc', ha: 0.3 },
+  { x: 306, y: 40, r: 9, core: '#f4f4ff', halo: '#96a0ff', ha: 0.42 },
+  { x: 88, y: 160, r: 21, core: '#fff4c8', halo: '#ffa06e', ha: 0.75 },
+];
+const CLOUD_TINT = ['#ffaa78', '#7864b4', '#3c4082', '#ffbea0'];
+const CLOUDS = [[60, 34, 60, 0.45], [170, 58, 86, 0.3], [280, 26, 70, 0.4], [370, 70, 96, 0.28]];
+const glowIds = new Map();
+// elipse com degradê radial que some nas bordas
+function glowEl(x, y, rx, ry, color, a, cls = '') {
+  let id = glowIds.get(color);
+  if (!id) {
+    id = `gl${glowIds.size}`; glowIds.set(color, id);
+    defs += `<radialGradient id="${id}"><stop offset="0" stop-color="${color}"/><stop offset=".45" stop-color="${color}" stop-opacity=".4"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
+  }
+  return `<ellipse${cls ? ` class="${cls}"` : ''} cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="url(#${id})" opacity="${+a.toFixed(2)}"/>`;
+}
+function skyArt(i) {
+  defs += `<linearGradient id="skyg${i}" x1="0" y1="0" x2="0" y2="1">${SKIES[i].map((c, j) => `<stop offset="${+bandPos[j].toFixed(3)}" stop-color="${c}"/>`).join('')}</linearGradient>`;
+  defs += `<linearGradient id="haze${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${SKIES[i][5]}" stop-opacity="0"/><stop offset="1" stop-color="${SKIES[i][5]}"/></linearGradient>`;
+  const o = ORBS[i];
+  let s = `<rect width="${VIEW_W}" height="${GROUND}" fill="url(#skyg${i})"/><rect y="${GROUND}" width="${VIEW_W}" height="${VIEW_H - GROUND}" fill="${SKIES[i][5]}"/>`;
+  s += glowEl(o.x, o.y, o.r * 7, o.r * 5, o.halo, o.ha * 0.6) + glowEl(o.x, o.y, o.r * 2.6, o.r * 2.6, o.halo, o.ha) + `<circle cx="${o.x}" cy="${o.y}" r="${o.r}" fill="${o.core}"/>`;
+  for (const [cx, cy, cw, ca] of CLOUDS) s += glowEl(cx, cy, cw, cw * 0.2, CLOUD_TINT[i], ca * 0.55) + glowEl(cx + cw * 0.35, cy - 4, cw * 0.6, cw * 0.16, CLOUD_TINT[i], ca * 0.5);
+  return smooth(s);
+}
+// névoa de profundidade: o que está atrás puxa para a cor do horizonte de cada fase
+const haze = (alpha, top) => smooth([0, 1, 2, 3].map(i => `<rect${i ? ` class="sky${i}"` : ''} y="${top}" width="${VIEW_W}" height="${GROUND - top}" fill="url(#haze${i})" fill-opacity="${alpha}"/>`).join(''));
+let sky = skyArt(0);
 zoneT.forEach((t, i) => {
   const name = frames(`sky${i + 1}`, [[0, 0], [t - 0.7, 0], [t + 0.7, 1], [LOOP, 1]], 'opacity', 'linear');
-  sky += g(name, P_(skyRects(i + 1)));
+  sky += g(name, skyArt(i + 1));
 });
 const starPairs = [[0, STAR_ALPHA[0]]];
 zoneT.forEach((t, i) => starPairs.push([t - 0.7, STAR_ALPHA[i]], [t + 0.7, STAR_ALPHA[i + 1]]));
@@ -107,7 +139,23 @@ world.cars.forEach((c, i) => {
   defs += `<clipPath id="road${i}"><rect x="${c.from}" y="0" width="${c.to - c.from}" height="${VIEW_H}"/></clipPath>`;
   extras += `<g clip-path="url(#road${i})"><g class="car${i}"><g transform="translate(0,${c.y})">${P_(c.rects)}</g></g></g>`;
 });
-const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects) + (k === 'main' ? extras + g('bob', chips) : ''));
+// luzes: brilho suave por cima do cenário (mesmas fontes de luz do jogo)
+const LIGHT_GAIN = 0.62;
+const lightsSvg = smooth(world.lights.map(l => glowEl(l.x, l.y, l.rx, l.ry, l.color, l.a * LIGHT_GAIN, l.blink >= 0 ? `bl${l.blink}` : '')).join(''));
+const layerSvg = k => g(`cam-${k}`, P_(world.layers[k].rects) + (k === 'main' ? extras + g('bob', chips) + lightsSvg : ''));
+
+// chuva na fase 3: um padrão de riscos que desliza na diagonal
+const RAIN = { w: 96, h: 120 };
+{
+  let s = 99; const r = () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const drops = Array.from({ length: 16 }, () => { const x = 4 + r() * (RAIN.w - 8), y = r() * (RAIN.h - 10); return `M${x.toFixed(1)} ${y.toFixed(1)}l-2.2 9`; }).join('');
+  defs += `<pattern id="rain" width="${RAIN.w}" height="${RAIN.h}" patternUnits="userSpaceOnUse"><path d="${drops}" stroke="#becdff" stroke-width=".5" stroke-opacity=".34" fill="none"/></pattern>`;
+  css.push(`@keyframes rainfall{0%{transform:translate(0,0)}100%{transform:translate(${-RAIN.w}px,${RAIN.h * 3}px)}}`, '.rainfall{animation:rainfall .95s linear infinite}');
+}
+const rainVis = frames('rain-vis', [[0, 0], [zoneT[1] - 0.7, 0], [zoneT[1] + 0.7, 1], [zoneT[2] - 0.7, 1], [zoneT[2] + 0.7, 0], [LOOP, 0]], 'opacity', 'linear');
+const rain = g(rainVis, smooth(`<rect class="rainfall" x="0" y="${-RAIN.h * 3}" width="${VIEW_W + RAIN.w}" height="${VIEW_H + RAIN.h * 3}" fill="url(#rain)"/>`));
+defs += `<radialGradient id="vig" gradientUnits="userSpaceOnUse" cx="${VIEW_W / 2}" cy="${VIEW_H / 2}" r="236"><stop offset=".4" stop-color="#060214" stop-opacity="0"/><stop offset="1" stop-color="#060214" stop-opacity=".55"/></radialGradient>`;
+const vignette = `<rect width="${VIEW_W}" height="${VIEW_H}" fill="url(#vig)"/>`;
 
 // ---------- personagem ----------
 css.push('@keyframes wf{0%{opacity:1}12.5%{opacity:0}100%{opacity:0}}', `.wf{opacity:0;animation:wf ${WALK_CYCLE}s step-end infinite}`);
@@ -200,9 +248,13 @@ ${defs}
 <g transform="translate(${SX},${SY})" clip-path="url(#screen)">
 ${sky}
 ${layerSvg('far')}
+${haze(0.5, 40)}
 ${layerSvg('mid')}
+${haze(0.24, 90)}
 ${layerSvg('main')}
 ${player}
+${rain}
+${vignette}
 ${g(visible('v-hud', [[T_GAME, T_END]]), hud)}
 ${dialogs}
 ${end}
