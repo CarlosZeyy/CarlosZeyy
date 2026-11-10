@@ -9,13 +9,13 @@ const CX = 21;            // x do quadril (âncora horizontal do sprite)
 const FLOOR = 63;         // coordenada y do chão dentro do sprite
 const THIGH = 12, SHIN = 11, UPPER = 9, FORE = 8, TORSO = 17;
 
-// tons [claro, médio, escuro] de cada material
+// tons [claro, médio, escuro, sombra funda] de cada material
 const MAT = {
-  skin: ['A', 'S', 's'],
-  shirtL: ['V', 'T', 'v'],
-  shirtD: ['z', 't', 'Z'],
-  pants: ['p', 'P', 'J'],
-  shoe: ['X', 'W', 'x'],
+  skin: ['A', 'S', 's', 'r'],
+  shirtL: ['V', 'T', 'v', 'f'],
+  shirtD: ['z', 't', 'Z', 'k'],
+  pants: ['p', 'P', 'J', 'j'],
+  shoe: ['X', 'W', 'x', 'w'],
 };
 
 // cabeça 14x15, virada para a direita
@@ -53,10 +53,10 @@ function capsule(cv, a, b, ra, rb, part, matFn, opt = {}) {
     const d = Math.hypot(px - (a.x + dx * t), py - (a.y + dy * t));
     const r = ra + (rb - ra) * t;
     const u = ((px - a.x) * dy - (py - a.y) * dx) / len; // lado em relação ao eixo
-    if (d <= r) hits.push([x, y, t, u]);
+    if (d <= r) hits.push([x, y, t, u, u / r]);
     else if (opt.sep && d <= r + 1 && cv[y][x] && cv[y][x].part !== part) cv[y][x].force = true; // sombra de separação
   }
-  for (const [x, y, t, u] of hits) cv[y][x] = { m: matFn(t, u, x, y), part, back: !!opt.back, wide: !!opt.wide, force: !!opt.force };
+  for (const [x, y, t, u, n] of hits) cv[y][x] = { m: matFn(t, u, x, y), n, part, back: !!opt.back, wide: !!opt.wide, force: !!opt.force };
 }
 
 function legGeom(thighDeg, bendDeg) {
@@ -140,12 +140,12 @@ function render(p) {
   const out = cv.map((row, y) => row.map((c, x) => {
     if (!c) return '.';
     if (c.ch) return c.ch;
-    let tone = 1;
+    // volume: cada membro é um cilindro iluminado pela frente; bordas de baixo e de trás escurecem
+    let tone = c.n > 0.36 ? 0 : c.n < -0.4 ? 2 : 1;
     if (!same(c, x - 1, y) || !same(c, x, y + 1)) tone = 2;
-    else if (!same(c, x + 1, y) || !same(c, x, y - 1)) tone = 0;
-    else if (c.wide && !same(c, x - 2, y)) tone = 2;
-    if (c.force) tone = 2;
-    if (c.back) tone = Math.min(2, tone + 1);
+    else if (tone === 1 && !same(c, x, y - 1)) tone = 0;
+    if (c.force) tone = Math.max(tone, 2);
+    if (c.back) tone = Math.min(3, tone + 1);
     if (c.m === 'shoe' && !same(c, x, y + 1)) return 'q'; // sola
     return MAT[c.m][tone];
   }));
